@@ -1,0 +1,22 @@
+name: SwiftLint
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  lint:
+    name: Run SwiftLint
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run SwiftLint using config file
+        uses: norio-nomura/action-swiftlint@3.2.1
+        with:
+          args: --config TODOMate/.swiftlint.yml

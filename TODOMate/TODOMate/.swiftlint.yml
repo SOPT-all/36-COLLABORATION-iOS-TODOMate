@@ -22,9 +22,6 @@ opt_in_rules:
   - sorted_imports
   - trailing_newline
 
-included:
-  - TODOMate
-
 excluded:
   - TODOMate/App/AppDelegate.swift
   - TODOMate/App/SceneDelegate.swift

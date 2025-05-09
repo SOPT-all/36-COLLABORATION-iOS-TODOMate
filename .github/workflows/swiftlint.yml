@@ -10,13 +10,13 @@ on:
 jobs:
   lint:
     name: Run SwiftLint
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Run SwiftLint using config file
         uses: norio-nomura/action-swiftlint@3.2.1
         with:
-          args: --config .swiftlint.yml
+          args: --config TODOMate/.swiftlint.yml

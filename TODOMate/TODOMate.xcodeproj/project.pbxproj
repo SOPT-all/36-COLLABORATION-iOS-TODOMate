@@ -15,10 +15,10 @@
 		E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F372DCC9A09006F43B6 /* BaseUIViewController.swift */; };
 		E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F392DCC9A1C006F43B6 /* BaseUIView.swift */; };
 		E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */; };
+		E5191F5F2DCE5F21006F43B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		51647CAB2DCE2B1A008F1B55 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E5191F032DCC975B006F43B6 /* TODOMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5191F1C2DCC9790006F43B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,6 +29,7 @@
 		E5191F372DCC9A09006F43B6 /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		E5191F392DCC9A1C006F43B6 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +46,7 @@
 		E5191EFA2DCC975B006F43B6 = {
 			isa = PBXGroup;
 			children = (
+				E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */,
 				E5191F242DCC9790006F43B6 /* TODOMate */,
 				E5191F042DCC975B006F43B6 /* Products */,
 			);
@@ -66,7 +68,6 @@
 				E5191F352DCC99D7006F43B6 /* Global */,
 				E5191F2E2DCC9940006F43B6 /* Resources */,
 				E5191F1D2DCC9790006F43B6 /* Info.plist */,
-				51647CAB2DCE2B1A008F1B55 /* .swiftlint.yml */,
 			);
 			path = TODOMate;
 			sourceTree = "<group>";
@@ -185,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5191F5F2DCE5F21006F43B6 /* .swiftlint.yml in Resources */,
 				E5191F282DCC9790006F43B6 /* Assets.xcassets in Resources */,
 				E5191F2A2DCC9790006F43B6 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -210,7 +212,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n \nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -249,6 +251,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TODOMate/Info.plist;
@@ -277,6 +280,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TODOMate/Info.plist;

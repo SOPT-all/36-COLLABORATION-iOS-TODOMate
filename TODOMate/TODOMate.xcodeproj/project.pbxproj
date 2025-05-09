@@ -45,7 +45,6 @@
 		E5191EFA2DCC975B006F43B6 = {
 			isa = PBXGroup;
 			children = (
-				51647CAB2DCE2B1A008F1B55 /* .swiftlint.yml */,
 				E5191F242DCC9790006F43B6 /* TODOMate */,
 				E5191F042DCC975B006F43B6 /* Products */,
 			);
@@ -67,6 +66,7 @@
 				E5191F352DCC99D7006F43B6 /* Global */,
 				E5191F2E2DCC9940006F43B6 /* Resources */,
 				E5191F1D2DCC9790006F43B6 /* Info.plist */,
+				51647CAB2DCE2B1A008F1B55 /* .swiftlint.yml */,
 			);
 			path = TODOMate;
 			sourceTree = "<group>";

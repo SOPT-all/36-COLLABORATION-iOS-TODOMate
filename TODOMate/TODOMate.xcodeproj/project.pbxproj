@@ -17,6 +17,7 @@
 		E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F392DCC9A1C006F43B6 /* BaseUIView.swift */; };
 		E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */; };
 		E5191F5F2DCE5F21006F43B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */; };
+		E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C98C2DD125CD002CF37B /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E5191F392DCC9A1C006F43B6 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E554C98C2DD125CD002CF37B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -94,6 +96,7 @@
 		E5191F2F2DCC9946006F43B6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E554C98B2DD125A9002CF37B /* TabBar */,
 				E5191F232DCC9790006F43B6 /* ViewController.swift */,
 			);
 			path = Features;
@@ -134,6 +137,14 @@
 				E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E554C98B2DD125A9002CF37B /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E554C98C2DD125CD002CF37B /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */,
 				51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */,
 				E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */,
+				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,
 				E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */,
 				E5191F272DCC9790006F43B6 /* ViewController.swift in Sources */,
 			);

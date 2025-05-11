@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B777012DD0FBF700A262CE /* UIFont+.swift */; };
 		E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */; };
 		E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F222DCC9790006F43B6 /* SceneDelegate.swift */; };
 		E5191F272DCC9790006F43B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F232DCC9790006F43B6 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51B777012DD0FBF700A262CE /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5191F032DCC975B006F43B6 /* TODOMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5191F1C2DCC9790006F43B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,6 +33,14 @@
 		E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		51B7767A2DD0FA7700A262CE /* Font */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Font;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E5191F002DCC975B006F43B6 /* Frameworks */ = {
@@ -75,6 +85,7 @@
 		E5191F2E2DCC9940006F43B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51B7767A2DD0FA7700A262CE /* Font */,
 				E5191F1C2DCC9790006F43B6 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -119,6 +130,7 @@
 		E5191F3B2DCC9A39006F43B6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				51B777012DD0FBF700A262CE /* UIFont+.swift */,
 				E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */,
 			);
 			path = Extensions;
@@ -139,6 +151,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				51B7767A2DD0FA7700A262CE /* Font */,
 			);
 			name = TODOMate;
 			packageProductDependencies = (
@@ -224,6 +239,7 @@
 				E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */,
 				E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */,
 				E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */,
+				51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */,
 				E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */,
 				E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */,
 				E5191F272DCC9790006F43B6 /* ViewController.swift in Sources */,

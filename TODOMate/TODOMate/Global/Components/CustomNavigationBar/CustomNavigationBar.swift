@@ -16,21 +16,21 @@ final class CustomNavigationBar: BaseUIView {
 
     ///실제 아이콘이 추가되면 변경될 예정입니다
     private let logoImageView =  UIImageView().then {
-        $0.backgroundColor = .black
+        $0.image = .reIconLogo
     }
 
     private let calendarButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "calendar"), for: .normal)
+        $0.setImage(.reIconDatebox, for: .normal)
         $0.tintColor = .black
     }
 
     private let sendButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "paperplane"), for: .normal)
+        $0.setImage(.reIconDm, for: .normal)
         $0.tintColor = .black
     }
 
     private let moreButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
+        $0.setImage(.reIconMenu, for: .normal)
         $0.tintColor = .black
     }
 

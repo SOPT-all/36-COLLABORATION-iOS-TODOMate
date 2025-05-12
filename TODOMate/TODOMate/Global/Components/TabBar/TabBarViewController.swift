@@ -21,10 +21,10 @@ final class TabBarViewController: UITabBarController {
 
     private func setupViewControllers() {
         viewControllers = [
-            createViewController(for: ViewController(), title: "피드", imageName: "house.fill"),
-            createViewController(for: ViewController(), title: "둘러보기", imageName: "location.north.circle"),
-            createViewController(for: ViewController(), title: "알림", imageName: "bell"),
-            createViewController(for: ViewController(), title: "My", imageName: "person")
+            createViewController(for: HomeViewController(), title: "피드", imageName: "house.fill"),
+            createViewController(for: HomeViewController(), title: "둘러보기", imageName: "location.north.circle"),
+            createViewController(for: HomeViewController(), title: "알림", imageName: "bell"),
+            createViewController(for: HomeViewController(), title: "My", imageName: "person")
         ]
     }
 

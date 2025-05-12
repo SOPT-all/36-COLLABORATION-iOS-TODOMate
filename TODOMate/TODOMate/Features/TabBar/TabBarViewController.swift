@@ -28,7 +28,6 @@ final class TabBarViewController: UITabBarController {
         ]
     }
 
-    //TODO: - 아이콘, 색상, 폰트 변경하기
     private func setupTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()

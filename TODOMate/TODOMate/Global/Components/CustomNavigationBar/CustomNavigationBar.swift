@@ -14,12 +14,9 @@ final class CustomNavigationBar: BaseUIView {
 
     // MARK: - UI Components
 
-    private let closeButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        $0.tintColor = .black
-        $0.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        $0.layer.cornerRadius = 16
-        $0.clipsToBounds = true
+    ///실제 아이콘이 추가되면 변경될 예정입니다
+    private let logoImageView =  UIImageView().then {
+        $0.backgroundColor = .black
     }
 
     private let calendarButton = UIButton().then {
@@ -37,9 +34,9 @@ final class CustomNavigationBar: BaseUIView {
         $0.tintColor = .black
     }
 
-    private lazy var rightStackView = UIStackView(arrangedSubviews: [calendarButton, sendButton, moreButton]).then {
+    private let rightStackView = UIStackView().then {
         $0.axis = .horizontal
-        $0.spacing = 16
+        $0.spacing = 24
         $0.alignment = .center
     }
 
@@ -47,15 +44,23 @@ final class CustomNavigationBar: BaseUIView {
 
     override func setUI() {
         backgroundColor = .white
-        addSubview(closeButton)
-        addSubview(rightStackView)
+        addSubviews(logoImageView, rightStackView)
+        [calendarButton, sendButton, moreButton].forEach {
+            rightStackView.addArrangedSubview($0)
+        }
     }
 
     override func setLayout() {
-        closeButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(16)
+        logoImageView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(19)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(32)
+            $0.width.height.equalTo(30)
+        }
+
+        [calendarButton, sendButton, moreButton].forEach {
+            $0.snp.makeConstraints {
+                $0.width.height.equalTo(24)
+            }
         }
 
         rightStackView.snp.makeConstraints {

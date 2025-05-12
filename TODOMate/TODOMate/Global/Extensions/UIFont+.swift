@@ -8,36 +8,34 @@
 import UIKit
 
 extension UIFont {
-    enum FontFamaliy {
-        case black, bold, extraBold, extraLight, light, medium, regular, semiBold, thin
-
-        var name: String {
-            switch self {
-            case .black:
-                return "Black"
-            case .bold:
-                return "Bold"
-            case .extraBold:
-                return "ExtraBold"
-            case .extraLight:
-                return "ExtraLight"
-            case .light:
-                return "Light"
-            case .medium:
-                return "Medium"
-            case .regular:
-                return "Regular"
-            case .semiBold:
-                return "SemiBold"
-            case .thin:
-                return "Thin"
-            }
-        }
+    class var body_med_16: UIFont {
+        return UIFont(name: "Pretendard-Medium", size: 23)!
     }
-    static func pretendard(_ fontFamily: FontFamaliy, size: CGFloat) -> UIFont {
-        guard let pretendardFont = UIFont(name: "Pretendard-\(fontFamily.name)", size: size) else {
-            fatalError("폰트를 찾을 수 없어요!")
-        }
-        return pretendardFont
+    class var body_semi_14: UIFont {
+        return UIFont(name: "Pretendard-SemiBold", size: 14)!
+    }
+    class var body_reg_14: UIFont {
+        return UIFont(name: "Pretendard-Regular", size: 14)!
+    }
+    class var cap_bold_12: UIFont {
+        return UIFont(name: "Pretendard-Bold", size: 12)!
+    }
+    class var cap_semi_12: UIFont {
+        return UIFont(name: "Pretendard-SemiBold", size: 12)!
+    }
+    class var cap_med_12: UIFont {
+        return UIFont(name: "Pretendard-Medium", size: 12)!
+    }
+    class var cap_reg_12: UIFont {
+        return UIFont(name: "Pretendard-Regular", size: 12)!
+    }
+    class var cap_semi_10: UIFont {
+        return UIFont(name: "Pretendard-SemiBold", size: 10)!
+    }
+    class var cap_medi_10: UIFont {
+        return UIFont(name: "Pretendard-Medium", size: 10)!
+    }
+    class var cap_bold_8: UIFont {
+        return UIFont(name: "Pretendard-Bold", size: 8)!
     }
 }

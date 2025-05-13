@@ -17,6 +17,10 @@
 		E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F392DCC9A1C006F43B6 /* BaseUIView.swift */; };
 		E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */; };
 		E5191F5F2DCE5F21006F43B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */; };
+		E52CDF072DD3AAD600E22E00 /* HomeViewController_sooyoung.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF062DD3AAD600E22E00 /* HomeViewController_sooyoung.swift */; };
+		E52CDF092DD3AAD800E22E00 /* HomeView_sooyoung.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF082DD3AAD800E22E00 /* HomeView_sooyoung.swift */; };
+		E52CDF0B2DD3AB3700E22E00 /* HomeViewController_nayeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF0A2DD3AB3700E22E00 /* HomeViewController_nayeon.swift */; };
+		E52CDF0D2DD3AB3900E22E00 /* HomeView_nayeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF0C2DD3AB3900E22E00 /* HomeView_nayeon.swift */; };
 		E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C98C2DD125CD002CF37B /* TabBarViewController.swift */; };
 		E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */; };
 		E567AB6D2DD20D0100FA92E2 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E567AB6C2DD20D0100FA92E2 /* Then */; };
@@ -37,6 +41,10 @@
 		E5191F392DCC9A1C006F43B6 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		E5191F5E2DCE5F21006F43B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E52CDF062DD3AAD600E22E00 /* HomeViewController_sooyoung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController_sooyoung.swift; sourceTree = "<group>"; };
+		E52CDF082DD3AAD800E22E00 /* HomeView_sooyoung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView_sooyoung.swift; sourceTree = "<group>"; };
+		E52CDF0A2DD3AB3700E22E00 /* HomeViewController_nayeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController_nayeon.swift; sourceTree = "<group>"; };
+		E52CDF0C2DD3AB3900E22E00 /* HomeView_nayeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView_nayeon.swift; sourceTree = "<group>"; };
 		E554C98C2DD125CD002CF37B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		E567AB742DD2119000FA92E2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -147,6 +155,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E52CDF002DD3AA6600E22E00 /* Nayeon */ = {
+			isa = PBXGroup;
+			children = (
+				E52CDF0A2DD3AB3700E22E00 /* HomeViewController_nayeon.swift */,
+				E52CDF0C2DD3AB3900E22E00 /* HomeView_nayeon.swift */,
+			);
+			path = Nayeon;
+			sourceTree = "<group>";
+		};
+		E52CDF012DD3AA6D00E22E00 /* Sooyoung */ = {
+			isa = PBXGroup;
+			children = (
+				E52CDF062DD3AAD600E22E00 /* HomeViewController_sooyoung.swift */,
+				E52CDF082DD3AAD800E22E00 /* HomeView_sooyoung.swift */,
+			);
+			path = Sooyoung;
+			sourceTree = "<group>";
+		};
 		E554C98B2DD125A9002CF37B /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +193,8 @@
 		E567AB712DD2117200FA92E2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E52CDF012DD3AA6D00E22E00 /* Sooyoung */,
+				E52CDF002DD3AA6600E22E00 /* Nayeon */,
 				E567AB722DD2117900FA92E2 /* HomeViewController */,
 				E567AB732DD2118700FA92E2 /* HomeView */,
 			);
@@ -308,9 +336,13 @@
 				E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */,
 				E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */,
 				51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */,
+				E52CDF0B2DD3AB3700E22E00 /* HomeViewController_nayeon.swift in Sources */,
+				E52CDF0D2DD3AB3900E22E00 /* HomeView_nayeon.swift in Sources */,
 				E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */,
 				E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */,
+				E52CDF072DD3AAD600E22E00 /* HomeViewController_sooyoung.swift in Sources */,
 				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,
+				E52CDF092DD3AAD800E22E00 /* HomeView_sooyoung.swift in Sources */,
 				E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */,
 				E5191F272DCC9790006F43B6 /* HomeViewController.swift in Sources */,
 			);

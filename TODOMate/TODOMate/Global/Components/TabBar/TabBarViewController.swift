@@ -22,8 +22,8 @@ final class TabBarViewController: UITabBarController {
     private func setupViewControllers() {
         viewControllers = [
             createViewController(for: HomeViewController(), title: "피드", imageName: .reIconFeed),
-            createViewController(for: HomeViewController(), title: "둘러보기", imageName: .reIconExplore),
-            createViewController(for: HomeViewController(), title: "알림", imageName: .reIconNoti),
+            createViewController(for: HomeViewController_sooyoung(), title: "둘러보기", imageName: .reIconNav),
+            createViewController(for: HomeViewController_nayeon(), title: "알림", imageName: .reIconNoti),
             createViewController(for: HomeViewController(), title: "My", imageName: .reIconMy)
         ]
     }
@@ -56,7 +56,19 @@ final class TabBarViewController: UITabBarController {
                                       imageName: UIImage) -> UIViewController {
         let viewController = UINavigationController(rootViewController: rootViewController)
         viewController.tabBarItem.title = title
-        viewController.tabBarItem.image = imageName
+        viewController.tabBarItem.image = resizeImage(image: imageName)
+            .withRenderingMode(.alwaysTemplate)
         return viewController
+    }
+
+    private func resizeImage(image: UIImage) -> UIImage {
+        let size = CGSize(width: 24, height: 24)
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        image.draw(in: CGRect(origin: .zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return resizedImage!
     }
 }

@@ -38,7 +38,7 @@ final class TodoView: BaseUIView {
         $0.contentMode = .scaleAspectFit
     }
 
-    let textView = UITextView().then {
+    private let textView = UITextView().then {
         $0.textColor = .black
         $0.backgroundColor = .clear
         $0.isScrollEnabled = false
@@ -78,9 +78,10 @@ final class TodoView: BaseUIView {
     override func setLayout() {
         let iconSize: CGFloat = (taskType == .main) ? 20 : 16
         let topBottomPadding: CGFloat = (taskType == .main) ? 8 : 4
+        let leadingInset: CGFloat = (taskType == .main) ? 0 : 24
 
         imageButton.snp.makeConstraints {
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(leadingInset)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(iconSize)
         }
@@ -97,7 +98,7 @@ final class TodoView: BaseUIView {
                 $0.leading.equalTo(textView.snp.leading)
                 $0.trailing.equalTo(textView.snp.trailing)
             } else {
-                $0.leading.equalToSuperview()
+                $0.leading.equalToSuperview().offset(leadingInset)
                 $0.trailing.equalToSuperview()
             }
             $0.top.equalTo(textView.snp.bottom).offset(4)

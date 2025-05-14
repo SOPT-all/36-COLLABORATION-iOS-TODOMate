@@ -21,7 +21,11 @@ final class TodoListView: BaseUIView {
     private var todoViews: [TodoView] = []
     private weak var focusedView: TodoView?
 
+    /// 투두 완료했을때 사용하는 콜백입니다
     var onToggle: ((UUID, Bool) -> Void)?
+
+    /// 투두 등록할때 사용하는 콜백입니다
+    var onCommit: ((UUID, String, TodoView.TaskType) -> Void)?
 
     // MARK: - Lifecycle
 
@@ -60,26 +64,28 @@ final class TodoListView: BaseUIView {
 
         view.unFocus = { [weak self] in
             guard let self else { return }
-            guard view.isEmpty else { return }
             guard let startIndex = todoViews.firstIndex(of: view) else { return }
 
-            var endIndex = startIndex + 1
+            if view.isEmpty {
+                var endIndex = startIndex + 1
 
-            if view.taskType == .main {
-                while endIndex < todoViews.count,
-                      todoViews[endIndex].taskType == .sub {
-                    endIndex += 1
+                if view.taskType == .main {
+                    while endIndex < todoViews.count,
+                          todoViews[endIndex].taskType == .sub {
+                        endIndex += 1
+                    }
                 }
-            }
 
-            let viewsToRemove = todoViews[startIndex..<endIndex]
-            viewsToRemove.reversed().forEach {
-                self.stackView.removeArrangedSubview($0)
-                $0.removeFromSuperview()
+                let viewsToRemove = todoViews[startIndex..<endIndex]
+                viewsToRemove.reversed().forEach {
+                    self.stackView.removeArrangedSubview($0)
+                    $0.removeFromSuperview()
+                }
+                todoViews.removeSubrange(startIndex..<endIndex)
+            } else {
+                self.onCommit?(view.id, view.text, view.taskType)
             }
-            todoViews.removeSubrange(startIndex..<endIndex)
         }
-
 
         view.onToggle = { [weak self] id, isSelected in
             self?.onToggle?(id, isSelected)
@@ -87,5 +93,4 @@ final class TodoListView: BaseUIView {
 
         return view
     }
-
 }

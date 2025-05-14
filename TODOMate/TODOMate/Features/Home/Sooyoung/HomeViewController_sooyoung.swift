@@ -17,7 +17,7 @@ final class HomeViewController_sooyoung: BaseUIViewController {
 
     override func setUI() {
         view.addSubviews(homeView)
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
     }
 
     override func setLayout() {

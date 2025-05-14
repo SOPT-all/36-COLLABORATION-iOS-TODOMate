@@ -5,27 +5,29 @@
 //  Created by 성현주 on 5/12/25.
 //
 
+import UIKit
 import Foundation
+import Then
 
 final class HomeView_sooyoung: BaseUIView {
 
     // MARK: - UI Components
 
-    let navigationBar = CustomNavigationBar()
+    let datePicker = CustomDatePicker()
 
     // MARK: - Custom Methods
 
     override func setUI() {
-        [navigationBar].forEach {
+        [datePicker].forEach {
             addSubview($0)
         }
     }
-
+    
     override func setLayout() {
-        navigationBar.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+        datePicker.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).inset(100)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(48)
+            $0.height.greaterThanOrEqualTo(200)
         }
     }
 }

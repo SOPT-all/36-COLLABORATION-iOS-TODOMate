@@ -56,6 +56,11 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CustomDatePicker;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +189,7 @@
 		E567AB682DD20CCB00FA92E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
 				E567AB762DD2119D00FA92E2 /* CustomNavigationBar */,
 				E554C98B2DD125A9002CF37B /* TabBar */,
 			);
@@ -243,6 +249,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				51B7767A2DD0FA7700A262CE /* Font */,
+				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
 			);
 			name = TODOMate;
 			packageProductDependencies = (

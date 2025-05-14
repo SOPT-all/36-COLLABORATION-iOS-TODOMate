@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 
 final class TodoView: BaseUIView {
@@ -19,18 +20,21 @@ final class TodoView: BaseUIView {
 
     // MARK: - Properties
 
-    private let taskType: TaskType
+    public let id: UUID = UUID()
 
-    public var isEmpty: Bool {
-        return textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
+    public var onFocus: (() -> Void)?
 
-    /// 외부에서 토글할 수 있는 선택 상태
     public var isSelected: Bool = false {
         didSet {
             updateImageForSelection()
         }
     }
+
+    public var isEmpty: Bool {
+        return textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    private let taskType: TaskType
 
     // MARK: - UI Components
 
@@ -94,19 +98,12 @@ final class TodoView: BaseUIView {
         }
 
         underlineView.snp.makeConstraints {
-            if taskType == .main {
-                $0.leading.equalTo(textView.snp.leading)
-                $0.trailing.equalTo(textView.snp.trailing)
-            } else {
-                $0.leading.equalToSuperview().offset(leadingInset)
-                $0.trailing.equalToSuperview()
-            }
+            $0.leading.equalToSuperview().offset(leadingInset)
+            $0.trailing.equalToSuperview()
             $0.top.equalTo(textView.snp.bottom).offset(4)
             $0.height.equalTo(1.5)
         }
     }
-
-    // MARK: - Private Methods
 
     private func configureTap() {
         imageButton.addTarget(self, action: #selector(didTapImageButton), for: .touchUpInside)
@@ -128,6 +125,7 @@ final class TodoView: BaseUIView {
 extension TodoView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         underlineView.isHidden = false
+        onFocus?()
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {

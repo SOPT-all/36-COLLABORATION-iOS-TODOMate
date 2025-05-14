@@ -30,6 +30,8 @@
 		E52CDF0D2DD3AB3900E22E00 /* HomeView_nayeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF0C2DD3AB3900E22E00 /* HomeView_nayeon.swift */; };
 		E52CDF372DD46EFB00E22E00 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF362DD46EFB00E22E00 /* CapsuleButton.swift */; };
 		E52CDF392DD4741A00E22E00 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF382DD4741A00E22E00 /* UIImage+.swift */; };
+		E52CDF3C2DD4D52500E22E00 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF3B2DD4D52500E22E00 /* ToDoView.swift */; };
+		E52CDF3E2DD4D76A00E22E00 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52CDF3D2DD4D76A00E22E00 /* UIViewController+.swift */; };
 		E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C98C2DD125CD002CF37B /* TabBarViewController.swift */; };
 		E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */; };
 		E567AB6D2DD20D0100FA92E2 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E567AB6C2DD20D0100FA92E2 /* Then */; };
@@ -63,6 +65,8 @@
 		E52CDF0C2DD3AB3900E22E00 /* HomeView_nayeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView_nayeon.swift; sourceTree = "<group>"; };
 		E52CDF362DD46EFB00E22E00 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
 		E52CDF382DD4741A00E22E00 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		E52CDF3B2DD4D52500E22E00 /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
+		E52CDF3D2DD4D76A00E22E00 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		E554C98C2DD125CD002CF37B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		E567AB742DD2119000FA92E2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				51B777012DD0FBF700A262CE /* UIFont+.swift */,
 				E5191F3E2DCC9A5E006F43B6 /* UIView+.swift */,
 				E52CDF382DD4741A00E22E00 /* UIImage+.swift */,
+				E52CDF3D2DD4D76A00E22E00 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -234,6 +239,14 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
+		E52CDF3A2DD4D50900E22E00 /* ToDoView */ = {
+			isa = PBXGroup;
+			children = (
+				E52CDF3B2DD4D52500E22E00 /* ToDoView.swift */,
+			);
+			path = ToDoView;
+			sourceTree = "<group>";
+		};
 		E554C98B2DD125A9002CF37B /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +258,7 @@
 		E567AB682DD20CCB00FA92E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E52CDF3A2DD4D50900E22E00 /* ToDoView */,
 				E52CDF322DD469D500E22E00 /* Button */,
 				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
 				51580CA22DD517FC00B56E7B /* Calender */,
@@ -418,6 +432,8 @@
 				E52CDF072DD3AAD600E22E00 /* HomeViewController_sooyoung.swift in Sources */,
 				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,
 				E52CDF092DD3AAD800E22E00 /* HomeView_sooyoung.swift in Sources */,
+				E52CDF3E2DD4D76A00E22E00 /* UIViewController+.swift in Sources */,
+				E52CDF3C2DD4D52500E22E00 /* ToDoView.swift in Sources */,
 				E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */,
 				E5191F272DCC9790006F43B6 /* HomeViewController.swift in Sources */,
 			);

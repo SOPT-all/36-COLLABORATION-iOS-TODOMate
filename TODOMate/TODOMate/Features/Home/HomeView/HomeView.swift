@@ -19,6 +19,10 @@ final class HomeView: BaseUIView {
         $0.textColor = .greenCategory1
     }
 
+    let todoView = TodoView(taskType: .main)
+
+    let subToDoView = TodoView(taskType: .sub)
+
     let categoryButton2 = CapsuleButton().then {
         $0.type = .toolBar
         $0.text = "루틴등록"
@@ -33,7 +37,7 @@ final class HomeView: BaseUIView {
     // MARK: - Custom Methods
 
     override func setUI() {
-        addSubviews(navigationBar, categoryButton1, categoryButton2, categoryButton3)
+        addSubviews(navigationBar, categoryButton1, todoView, subToDoView, categoryButton2, categoryButton3)
     }
 
     override func setLayout() {
@@ -47,8 +51,18 @@ final class HomeView: BaseUIView {
             $0.center.equalToSuperview()
         }
 
+        todoView.snp.makeConstraints {
+            $0.top.equalTo(categoryButton1.snp.bottom).offset(30)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+
+        subToDoView.snp.makeConstraints {
+            $0.top.equalTo(todoView.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+
         categoryButton2.snp.makeConstraints {
-            $0.top.equalTo(categoryButton1.snp.bottom).offset(20)
+            $0.top.equalTo(subToDoView.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
 

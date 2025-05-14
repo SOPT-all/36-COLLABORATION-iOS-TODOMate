@@ -16,11 +16,12 @@ final class HomeView_nayeon: BaseUIView {
     let navigationBar = CustomNavigationBar()
     let friendsListView = FriendsListView()
     let profileView = ProfileView()
+    let calenderView = CalenderView()
 
     // MARK: - Custom Methods
 
     override func setUI() {
-        [navigationBar, friendsListView, profileView].forEach {
+        [navigationBar, friendsListView, profileView, calenderView].forEach {
             addSubview($0)
         }
     }
@@ -42,6 +43,12 @@ final class HomeView_nayeon: BaseUIView {
             $0.top.equalTo(friendsListView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(50)
+        }
+        
+        calenderView.snp.makeConstraints {
+            $0.top.equalTo(profileView.snp.bottom).offset(28)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(104)
         }
     }
 }

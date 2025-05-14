@@ -37,7 +37,7 @@ final class TodoView: BaseUIView {
         return textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
-    private let taskType: TaskType
+    public let taskType: TaskType
 
     // MARK: - UI Components
 

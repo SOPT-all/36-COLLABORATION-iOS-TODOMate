@@ -60,15 +60,26 @@ final class TodoListView: BaseUIView {
 
         view.unFocus = { [weak self] in
             guard let self else { return }
-            if view.isEmpty {
-                stackView.removeArrangedSubview(view)
-                view.removeFromSuperview()
-                todoViews.removeAll { $0 == view }
-                if focusedView == view {
-                    focusedView = nil
+            guard view.isEmpty else { return }
+            guard let startIndex = todoViews.firstIndex(of: view) else { return }
+
+            var endIndex = startIndex + 1
+
+            if view.taskType == .main {
+                while endIndex < todoViews.count,
+                      todoViews[endIndex].taskType == .sub {
+                    endIndex += 1
                 }
             }
+
+            let viewsToRemove = todoViews[startIndex..<endIndex]
+            viewsToRemove.reversed().forEach {
+                self.stackView.removeArrangedSubview($0)
+                $0.removeFromSuperview()
+            }
+            todoViews.removeSubrange(startIndex..<endIndex)
         }
+
 
         view.onToggle = { [weak self] id, isSelected in
             self?.onToggle?(id, isSelected)

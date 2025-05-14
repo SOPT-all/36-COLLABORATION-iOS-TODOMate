@@ -82,7 +82,7 @@ final class HomeView: BaseUIView {
         }
 
         todoListView1.snp.makeConstraints {
-            $0.top.equalTo(categoryButton1.snp.bottom).offset(20)
+            $0.top.equalTo(categoryButton1.snp.bottom).offset(13)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
 
@@ -92,7 +92,7 @@ final class HomeView: BaseUIView {
         }
 
         todoListView2.snp.makeConstraints {
-            $0.top.equalTo(categoryButton2.snp.bottom).offset(20)
+            $0.top.equalTo(categoryButton2.snp.bottom).offset(13)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
 
@@ -102,7 +102,7 @@ final class HomeView: BaseUIView {
         }
 
         todoListView3.snp.makeConstraints {
-            $0.top.equalTo(categoryButton3.snp.bottom).offset(20)
+            $0.top.equalTo(categoryButton3.snp.bottom).offset(13)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
 

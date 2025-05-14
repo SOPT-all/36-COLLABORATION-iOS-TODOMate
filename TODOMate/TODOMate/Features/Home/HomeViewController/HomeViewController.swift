@@ -72,10 +72,16 @@ final class HomeViewController: BaseUIViewController {
 
     ///목데이터 테스트입니다
     private func configureMockTodos() {
-        let mock = MainTask.mockData()
-        homeView.todoListView1.configure(with: [mock[0]])
-        homeView.todoListView2.configure(with: [mock[1]])
-        homeView.todoListView3.configure(with: [mock[2]])
+        let mock = ToDoModel.mockData()
+        if let category1 = mock.first(where: { $0.categoryID == 1 }) {
+            homeView.todoListView1.configure(with: category1.mainTasks)
+        }
+        if let category2 = mock.first(where: { $0.categoryID == 2 }) {
+            homeView.todoListView2.configure(with: category2.mainTasks)
+        }
+        if let category3 = mock.first(where: { $0.categoryID == 3 }) {
+            homeView.todoListView3.configure(with: category3.mainTasks)
+        }
     }
 
     // MARK: - Action Methods

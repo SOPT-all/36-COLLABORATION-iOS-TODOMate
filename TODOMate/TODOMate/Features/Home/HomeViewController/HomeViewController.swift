@@ -26,17 +26,31 @@ final class HomeViewController: BaseUIViewController {
     }
 
     override func addTarget() {
-        homeView.categoryButton1.addTarget(self, action: #selector(didTapCategoryButton), for: .touchUpInside)
-        homeView.categoryButton3.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+        homeView.categoryButton1.addTarget(self, action: #selector(didTapCategory1Button), for: .touchUpInside)
+        homeView.categoryButton2.addTarget(self, action: #selector(didTapCategory2Button), for: .touchUpInside)
+        homeView.categoryButton3.addTarget(self, action: #selector(didTapCategory3Button), for: .touchUpInside)
+        homeView.aiButton.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+    }
+
+    // MARK: - Action Methods
+
+    @objc
+    private func didTapCategory1Button() {
+        homeView.todoListView1.addMainTask()
     }
 
     @objc
-    private func didTapCategoryButton() {
-        homeView.todoListView.addMainTask()
+    private func didTapCategory2Button() {
+        homeView.todoListView2.addMainTask()
+    }
+
+    @objc
+    private func didTapCategory3Button() {
+        homeView.todoListView3.addMainTask()
     }
 
     @objc
     private func didTapToolBarButton() {
-        homeView.todoListView.addSubTaskToFocused()
+        homeView.addSubTaskToFocusedList()
     }
 }

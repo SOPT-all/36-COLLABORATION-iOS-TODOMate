@@ -10,14 +10,11 @@ import SnapKit
 
 final class CapsuleButton: UIButton {
 
-    // MARK: - ButtonType
-
     enum CapsuleButtonType {
         case category
         case ai
+        case toolBar
     }
-
-    // MARK: - Public Properties
 
     var type: CapsuleButtonType = .category {
         didSet {
@@ -31,9 +28,29 @@ final class CapsuleButton: UIButton {
         }
     }
 
-    var textColor: UIColor?  = .black {
+    var textColor: UIColor? = .black {
         didSet {
             titleLabelView.textColor = textColor
+            leftImageView.tintColor = textColor
+            rightImageView.tintColor = textColor
+        }
+    }
+
+    var leftIcon: UIImage? {
+        didSet {
+            if type == .toolBar {
+                leftImageView.image = leftIcon?
+                    .withRenderingMode(.alwaysTemplate)
+                    .resize(to: 20)
+            }
+        }
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            if type == .toolBar {
+                updateToolBarStyle()
+            }
         }
     }
 
@@ -54,7 +71,7 @@ final class CapsuleButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - View Setup
+    // MARK: - Setup
 
     private func setupCommonView() {
         clipsToBounds = true
@@ -62,7 +79,6 @@ final class CapsuleButton: UIButton {
 
         leftImageView.contentMode = .scaleAspectFit
         rightImageView.contentMode = .scaleAspectFit
-
         titleLabelView.textAlignment = .center
 
         addSubviews(leftImageView, titleLabelView, rightImageView)
@@ -79,7 +95,6 @@ final class CapsuleButton: UIButton {
             titleLabelView.font = .cap_bold_12
             leftImageView.image = .reIconLock.resize(to: 20)
             rightImageView.image = .reIconAdd.resize(to: 24)
-
             layoutCategory()
 
         case .ai:
@@ -87,8 +102,14 @@ final class CapsuleButton: UIButton {
             titleLabelView.font = .cap_med_12
             leftImageView.image = .reIconAi.resize(to: 24)
             rightImageView.image = nil
-
             layoutAI()
+
+        case .toolBar:
+            titleLabelView.font = .cap_semi_12
+            leftImageView.image = leftIcon?.resize(to: 16)
+            rightImageView.image = nil
+            layoutAI()
+            updateToolBarStyle()
         }
     }
 
@@ -122,7 +143,6 @@ final class CapsuleButton: UIButton {
         leftImageView.snp.remakeConstraints {
             $0.leading.equalToSuperview().offset(8)
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(24)
         }
 
         titleLabelView.snp.remakeConstraints {
@@ -135,4 +155,17 @@ final class CapsuleButton: UIButton {
             $0.size.equalTo(0)
         }
     }
+
+    private func updateToolBarStyle() {
+        if isSelected {
+            backgroundColor = .bluegrey40
+            titleLabelView.textColor = .white
+            leftImageView.tintColor = .white
+        } else {
+            backgroundColor = .bluegrey10
+            titleLabelView.textColor = .bluegrey40
+            leftImageView.tintColor = .bluegrey40
+        }
+    }
+
 }

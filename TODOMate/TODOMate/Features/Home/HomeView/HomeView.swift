@@ -12,6 +12,7 @@ final class HomeView: BaseUIView {
     // MARK: - UI Components
 
     let navigationBar = CustomNavigationBar()
+
     let categoryButton1 = CapsuleButton().then {
         $0.type = .category
         $0.text = "카테고리 1"
@@ -19,9 +20,9 @@ final class HomeView: BaseUIView {
     }
 
     let categoryButton2 = CapsuleButton().then {
-        $0.type = .category
-        $0.text = "카테고리 2"
-        $0.textColor = .redCategory2
+        $0.type = .toolBar
+        $0.text = "루틴등록"
+        $0.leftIcon = .reIconRoutinGrey
     }
 
     let categoryButton3 = CapsuleButton().then {

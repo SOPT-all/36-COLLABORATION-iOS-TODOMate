@@ -21,6 +21,8 @@ final class TodoListView: BaseUIView {
     private var todoViews: [TodoView] = []
     private weak var focusedView: TodoView?
 
+    var onToggle: ((UUID, Bool) -> Void)?
+
     // MARK: - Lifecycle
 
     override func setUI() {
@@ -68,6 +70,11 @@ final class TodoListView: BaseUIView {
             }
         }
 
+        view.onToggle = { [weak self] id, isSelected in
+            self?.onToggle?(id, isSelected)
+        }
+
         return view
     }
+
 }

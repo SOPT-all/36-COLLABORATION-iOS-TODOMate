@@ -20,8 +20,10 @@ final class TodoView: BaseUIView {
 
     // MARK: - Properties
 
+    ///추후 int값으로 들어오는 id로 바꿀 예정입니다.
     public let id: UUID = UUID()
 
+    public var onToggle: ((UUID, Bool) -> Void)?
     public var onFocus: (() -> Void)?
     public var unFocus: (() -> Void)?
 
@@ -123,6 +125,7 @@ final class TodoView: BaseUIView {
     @objc
     private func didTapImageButton() {
         isSelected.toggle()
+        onToggle?(id, isSelected)
     }
 }
 

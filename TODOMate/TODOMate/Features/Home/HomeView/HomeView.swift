@@ -109,15 +109,17 @@ final class HomeView: BaseUIView {
         aiButton.snp.makeConstraints {
             $0.top.equalTo(todoListView3.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(40)
+            $0.bottom.equalToSuperview().inset(80)
         }
     }
 }
 
 extension HomeView {
+    var todoListViews: [TodoListView] {
+        [todoListView1, todoListView2, todoListView3]
+    }
+
     func addSubTaskToFocusedList() {
-        [todoListView1, todoListView2, todoListView3].forEach {
-            $0.addSubTaskToFocused()
-        }
+        todoListViews.forEach { $0.addSubTaskToFocused() }
     }
 }

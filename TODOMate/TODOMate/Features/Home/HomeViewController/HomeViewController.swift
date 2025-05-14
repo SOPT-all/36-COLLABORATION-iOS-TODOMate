@@ -26,10 +26,21 @@ final class HomeViewController: BaseUIViewController {
     }
 
     override func addTarget() {
+        setupTodoToggleCallbacks()
         homeView.categoryButton1.addTarget(self, action: #selector(didTapCategory1Button), for: .touchUpInside)
         homeView.categoryButton2.addTarget(self, action: #selector(didTapCategory2Button), for: .touchUpInside)
         homeView.categoryButton3.addTarget(self, action: #selector(didTapCategory3Button), for: .touchUpInside)
         homeView.aiButton.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+    }
+
+    // MARK: - Private Methods
+
+    private func setupTodoToggleCallbacks() {
+        homeView.todoListViews.enumerated().forEach { index, listView in
+            listView.onToggle = { id, isSelected in
+                print("[카테고리\(index + 1)] Todo ID: \(id), 상태: \(isSelected)")
+            }
+        }
     }
 
     // MARK: - Action Methods

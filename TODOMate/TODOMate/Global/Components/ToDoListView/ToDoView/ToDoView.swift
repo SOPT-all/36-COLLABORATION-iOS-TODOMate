@@ -21,7 +21,7 @@ final class TodoView: BaseUIView {
     // MARK: - Properties
 
     ///추후 int값으로 들어오는 id로 바꿀 예정입니다.
-    public let id: UUID = UUID()
+    public var id: UUID = UUID()
 
     public var onToggle: ((UUID, Bool) -> Void)?
     public var onFocus: (() -> Void)?
@@ -38,11 +38,12 @@ final class TodoView: BaseUIView {
     }
 
     public var text: String {
-        return textView.text ?? ""
+        get { textView.text ?? "" }
+        set { textView.text = newValue }
     }
 
     public let taskType: TaskType
-    
+
     public var parentMainTaskID: UUID?
 
     // MARK: - UI Components
@@ -66,14 +67,18 @@ final class TodoView: BaseUIView {
 
     // MARK: - Init
 
-    init(taskType: TaskType) {
+    init(taskType: TaskType, shouldFocus: Bool = false) {
         self.taskType = taskType
         super.init(frame: .zero)
         self.textView.delegate = self
-        self.textView.becomeFirstResponder()
-        self.underlineView.isHidden = false
+        self.underlineView.isHidden = true
         updateImageForSelection()
         configureTap()
+
+        if shouldFocus {
+            self.textView.becomeFirstResponder()
+            self.underlineView.isHidden = false
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -142,7 +147,7 @@ extension TodoView: UITextViewDelegate {
         underlineView.isHidden = false
         onFocus?()
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         underlineView.isHidden = true
         unFocus?()

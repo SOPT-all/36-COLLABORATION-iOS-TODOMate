@@ -23,6 +23,7 @@ final class TodoView: BaseUIView {
     public let id: UUID = UUID()
 
     public var onFocus: (() -> Void)?
+    public var unFocus: (() -> Void)?
 
     public var isSelected: Bool = false {
         didSet {
@@ -98,8 +99,13 @@ final class TodoView: BaseUIView {
         }
 
         underlineView.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(leadingInset)
-            $0.trailing.equalToSuperview()
+            if taskType == .main {
+                $0.leading.equalTo(textView.snp.leading)
+                $0.trailing.equalTo(textView.snp.trailing)
+            } else {
+                $0.leading.equalToSuperview().offset(leadingInset)
+                $0.trailing.equalToSuperview()
+            }
             $0.top.equalTo(textView.snp.bottom).offset(4)
             $0.height.equalTo(1.5)
         }
@@ -130,5 +136,6 @@ extension TodoView: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         underlineView.isHidden = true
+        unFocus?()
     }
 }

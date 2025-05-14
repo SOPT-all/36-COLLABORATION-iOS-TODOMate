@@ -52,12 +52,16 @@ final class HomeViewController: BaseUIViewController {
     /// 투두 등록 api 호출을 위한 함수입니다.
     private func setupTodoCommitCallbacks() {
         homeView.todoListViews.enumerated().forEach { index, listView in
-            listView.onCommit = { id, text, type in
-                print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type)")
+            listView.onCommit = { id, text, type, parentID in
+                if type == .main {
+                    print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type)")
+                } else {
+                    print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type), 서브구나 너 메인 아이디는 뭐냐고요: \(String(describing: parentID))")
+                }
             }
+
         }
     }
-
 
     // MARK: - Action Methods
 

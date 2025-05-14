@@ -42,6 +42,8 @@ final class TodoView: BaseUIView {
     }
 
     public let taskType: TaskType
+    
+    public var parentMainTaskID: UUID?
 
     // MARK: - UI Components
 

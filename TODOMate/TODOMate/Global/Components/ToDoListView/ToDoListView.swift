@@ -67,13 +67,23 @@ final class TodoListView: BaseUIView {
         let view = TodoView(taskType: type, shouldFocus: shouldFocus)
         view.parentMainTaskID = parentID
 
+        configureFocusHandler(for: view)
+        configureUnfocusHandler(for: view)
+        configureToggleHandler(for: view)
+
+        return view
+    }
+
+    private func configureFocusHandler(for view: TodoView) {
         view.onFocus = { [weak self] in
             self?.focusedView = view
         }
+    }
 
+    private func configureUnfocusHandler(for view: TodoView) {
         view.unFocus = { [weak self] in
-            guard let self else { return }
-            guard let startIndex = todoViews.firstIndex(of: view) else { return }
+            guard let self,
+                  let startIndex = todoViews.firstIndex(of: view) else { return }
 
             if view.isEmpty {
                 var endIndex = startIndex + 1
@@ -95,13 +105,28 @@ final class TodoListView: BaseUIView {
                 self.onCommit?(view.id, view.text, view.taskType, view.parentMainTaskID)
             }
         }
-
-        view.onToggle = { [weak self] id, isSelected in
-            self?.onToggle?(id, isSelected)
-        }
-
-        return view
     }
+
+    private func configureToggleHandler(for view: TodoView) {
+        view.onToggle = { [weak self] id, isSelected in
+            guard let self else { return }
+
+            self.onToggle?(id, isSelected)
+
+            guard view.taskType == .main,
+                  let currentIndex = self.todoViews.firstIndex(of: view) else { return }
+
+            var nextIndex = currentIndex + 1
+            while nextIndex < self.todoViews.count,
+                  self.todoViews[nextIndex].taskType == .sub {
+                let subView = self.todoViews[nextIndex]
+                subView.isSelected = isSelected
+                self.onToggle?(subView.id, isSelected)
+                nextIndex += 1
+            }
+        }
+    }
+
 }
 
 /// 처음에 뷰를 그릴때 사용합니다. 로직 조금만더 고민하고, 위로 올릴게용 ㅠ

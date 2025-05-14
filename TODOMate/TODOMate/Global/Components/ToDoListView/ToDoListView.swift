@@ -25,7 +25,7 @@ final class TodoListView: BaseUIView {
     var onToggle: ((UUID, Bool) -> Void)?
 
     /// 투두 등록할때 사용하는 콜백입니다
-    var onCommit: ((UUID, String, TodoView.TaskType) -> Void)?
+    var onCommit: ((UUID, String, TodoView.TaskType, UUID?) -> Void)?
 
     // MARK: - Lifecycle
 
@@ -48,15 +48,25 @@ final class TodoListView: BaseUIView {
     func addSubTaskToFocused() {
         guard let focusedView = focusedView else { return }
         guard let currentIndex = todoViews.firstIndex(of: focusedView) else { return }
-        let newSubView = makeTodoView(type: .sub)
+
+        let parentID: UUID
+        if focusedView.taskType == .main {
+            parentID = focusedView.id
+        } else {
+            parentID = todoViews[..<currentIndex].last(where: { $0.taskType == .main })?.id ?? UUID()
+        }
+
+        let newSubView = makeTodoView(type: .sub, parentID: parentID)
         stackView.insertArrangedSubview(newSubView, at: currentIndex + 1)
         todoViews.insert(newSubView, at: currentIndex + 1)
     }
 
+
     // MARK: - Private Methods
 
-    private func makeTodoView(type: TodoView.TaskType) -> TodoView {
+    private func makeTodoView(type: TodoView.TaskType, parentID: UUID? = nil) -> TodoView {
         let view = TodoView(taskType: type)
+        view.parentMainTaskID = parentID
 
         view.onFocus = { [weak self] in
             self?.focusedView = view
@@ -77,14 +87,13 @@ final class TodoListView: BaseUIView {
                 }
 
                 let viewsToRemove = todoViews[startIndex..<endIndex]
-                viewsToRemove.reversed().forEach {
+                viewsToRemove.forEach {
                     self.stackView.removeArrangedSubview($0)
                     $0.removeFromSuperview()
                 }
                 todoViews.removeSubrange(startIndex..<endIndex)
             } else {
-                self.onCommit?(view.id, view.text, view.taskType)
-            }
+                self.onCommit?(view.id, view.text, view.taskType, view.parentMainTaskID)            }
         }
 
         view.onToggle = { [weak self] id, isSelected in

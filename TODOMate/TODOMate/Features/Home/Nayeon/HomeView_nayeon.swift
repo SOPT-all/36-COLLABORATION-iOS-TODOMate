@@ -5,18 +5,22 @@
 //  Created by 성현주 on 5/12/25.
 //
 
-import Foundation
+import UIKit
+
+import SnapKit
 
 final class HomeView_nayeon: BaseUIView {
 
     // MARK: - UI Components
 
     let navigationBar = CustomNavigationBar()
+    let friendsListView = FriendsListView()
+    let profileView = ProfileView()
 
     // MARK: - Custom Methods
 
     override func setUI() {
-        [navigationBar].forEach {
+        [navigationBar, friendsListView, profileView].forEach {
             addSubview($0)
         }
     }
@@ -26,6 +30,18 @@ final class HomeView_nayeon: BaseUIView {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(48)
+        }
+        
+        friendsListView.snp.makeConstraints {
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(93)
+        }
+        
+        profileView.snp.makeConstraints {
+            $0.top.equalTo(friendsListView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(50)
         }
     }
 }

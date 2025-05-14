@@ -147,7 +147,6 @@ extension TodoView: UITextViewDelegate {
         underlineView.isHidden = false
         onFocus?()
     }
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         underlineView.isHidden = true
         unFocus?()

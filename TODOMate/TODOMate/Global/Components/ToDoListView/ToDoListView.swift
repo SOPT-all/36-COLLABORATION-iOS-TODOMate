@@ -13,7 +13,7 @@ final class TodoListView: BaseUIView {
 
     private let stackView = UIStackView().then {
         $0.axis = .vertical
-        $0.spacing = 12
+        $0.spacing = 8
     }
 
     // MARK: - Properties

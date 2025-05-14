@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct ToDoModel: Decodable {
+    let categoryID: Int
+    let mainTasks: [MainTask]
+}
+
 struct MainTask: Decodable {
     let id: UUID
     let text: String
@@ -20,33 +25,79 @@ struct SubTask: Decodable {
     let isDone: Bool
 }
 
-extension MainTask {
-    static func mockData() -> [MainTask] {
+extension ToDoModel {
+    static func mockData() -> [ToDoModel] {
         return [
-            MainTask(
-                id: UUID(),
-                text: "iOS 개발 공부하기",
-                isDone: false,
-                subtasks: [
-                    SubTask(id: UUID(), text: "MVVM 아키텍처 이해", isDone: false),
-                    SubTask(id: UUID(), text: "Combine 공부", isDone: true),
-                    SubTask(id: UUID(), text: "프로젝트 리팩토링", isDone: false)
+            ToDoModel(
+                categoryID: 1,
+                mainTasks: [
+                    MainTask(
+                        id: UUID(),
+                        text: "iOS 개발 공부하기",
+                        isDone: false,
+                        subtasks: [
+                            SubTask(id: UUID(), text: "MVVM 아키텍처 이해", isDone: false),
+                            SubTask(id: UUID(), text: "Combine 공부", isDone: true),
+                            SubTask(id: UUID(), text: "프로젝트 리팩토링", isDone: false)
+                        ]
+                    ),
+                    MainTask(
+                        id: UUID(),
+                        text: "iOS 개발 공부하기",
+                        isDone: false,
+                        subtasks: [
+                            SubTask(id: UUID(), text: "MVVM 아키텍처 이해", isDone: false),
+                            SubTask(id: UUID(), text: "Combine 공부", isDone: true),
+                            SubTask(id: UUID(), text: "프로젝트 리팩토링", isDone: false)
+                        ]
+                    ),
+                    MainTask(
+                        id: UUID(),
+                        text: "iOS 개발 공부하기",
+                        isDone: false,
+                        subtasks: [
+                            SubTask(id: UUID(), text: "MVVM 아키텍처 이해", isDone: false),
+                            SubTask(id: UUID(), text: "Combine 공부", isDone: true),
+                            SubTask(id: UUID(), text: "프로젝트 리팩토링", isDone: false)
+                        ]
+                    )
                 ]
             ),
-            MainTask(
-                id: UUID(),
-                text: "팀플 회의 준비",
-                isDone: true,
-                subtasks: [
-                    SubTask(id: UUID(), text: "요구사항 정리", isDone: true),
-                    SubTask(id: UUID(), text: "자료 조사", isDone: true)
+            ToDoModel(
+                categoryID: 2,
+                mainTasks: [
+                    MainTask(
+                        id: UUID(),
+                        text: "iOS 개발 공부하기",
+                        isDone: false,
+                        subtasks: [
+                            SubTask(id: UUID(), text: "MVVM 아키텍처 이해", isDone: false),
+                            SubTask(id: UUID(), text: "Combine 공부", isDone: true),
+                            SubTask(id: UUID(), text: "프로젝트 리팩토링", isDone: false)
+                        ]
+                    ),
+                    MainTask(
+                        id: UUID(),
+                        text: "iOS 개발 공부하기",
+                        isDone: false,
+                        subtasks: [
+                            SubTask(id: UUID(), text: "MVVM 아키텍처 이해", isDone: false),
+                            SubTask(id: UUID(), text: "Combine 공부", isDone: true),
+                            SubTask(id: UUID(), text: "프로젝트 리팩토링", isDone: false)
+                        ]
+                    )
                 ]
             ),
-            MainTask(
-                id: UUID(),
-                text: "거북목 대탈출",
-                isDone: false,
-                subtasks: []
+            ToDoModel(
+                categoryID: 3,
+                mainTasks: [
+                    MainTask(
+                        id: UUID(),
+                        text: "거북목 대탈출",
+                        isDone: false,
+                        subtasks: []
+                    )
+                ]
             )
         ]
     }

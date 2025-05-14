@@ -10,8 +10,10 @@ import UIKit
 extension UIImage {
     func resize(to size: CGFloat) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
-        return renderer.image { _ in
+        let resizedImage = renderer.image { _ in
             self.draw(in: CGRect(origin: .zero, size: CGSize(width: size, height: size)))
         }
+        return resizedImage.withRenderingMode(self.renderingMode)
     }
 }
+

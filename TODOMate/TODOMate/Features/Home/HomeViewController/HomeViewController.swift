@@ -24,4 +24,13 @@ final class HomeViewController: BaseUIViewController {
             $0.edges.equalToSuperview()
         }
     }
+
+    override func addTarget() {
+        homeView.categoryButton2.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+    }
+
+    @objc
+    private func didTapToolBarButton() {
+        homeView.categoryButton2.isSelected.toggle()
+    }
 }

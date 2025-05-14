@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 final class HomeViewController_nayeon: BaseUIViewController {
 
     // MARK: - UI Components
@@ -17,7 +19,6 @@ final class HomeViewController_nayeon: BaseUIViewController {
 
     override func setUI() {
         view.addSubviews(homeView)
-        view.backgroundColor = .red
     }
 
     override func setLayout() {

@@ -51,9 +51,23 @@ final class TodoListView: BaseUIView {
 
     private func makeTodoView(type: TodoView.TaskType) -> TodoView {
         let view = TodoView(taskType: type)
-        view.onFocus = { [weak self, weak view] in
+
+        view.onFocus = { [weak self] in
             self?.focusedView = view
         }
+
+        view.unFocus = { [weak self] in
+            guard let self else { return }
+            if view.isEmpty {
+                stackView.removeArrangedSubview(view)
+                view.removeFromSuperview()
+                todoViews.removeAll { $0 == view }
+                if focusedView == view {
+                    focusedView = nil
+                }
+            }
+        }
+
         return view
     }
 }

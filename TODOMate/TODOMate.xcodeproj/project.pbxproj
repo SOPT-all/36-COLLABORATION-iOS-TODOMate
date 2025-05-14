@@ -37,6 +37,7 @@
 		E567AB6D2DD20D0100FA92E2 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E567AB6C2DD20D0100FA92E2 /* Then */; };
 		E567AB702DD20D1C00FA92E2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E567AB6F2DD20D1C00FA92E2 /* SnapKit */; };
 		E567AB752DD2119000FA92E2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567AB742DD2119000FA92E2 /* HomeView.swift */; };
+		E5EF8D9B2DD4F62600CF5BB2 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EF8D9A2DD4F62600CF5BB2 /* ToDoListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		E554C98C2DD125CD002CF37B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		E567AB742DD2119000FA92E2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E5EF8D9A2DD4F62600CF5BB2 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -258,7 +260,7 @@
 		E567AB682DD20CCB00FA92E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				E52CDF3A2DD4D50900E22E00 /* ToDoView */,
+				E5EF8D992DD4F60C00CF5BB2 /* ToDoListView */,
 				E52CDF322DD469D500E22E00 /* Button */,
 				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
 				51580CA22DD517FC00B56E7B /* Calender */,
@@ -302,6 +304,15 @@
 				E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */,
 			);
 			path = CustomNavigationBar;
+			sourceTree = "<group>";
+		};
+		E5EF8D992DD4F60C00CF5BB2 /* ToDoListView */ = {
+			isa = PBXGroup;
+			children = (
+				E5EF8D9A2DD4F62600CF5BB2 /* ToDoListView.swift */,
+				E52CDF3A2DD4D50900E22E00 /* ToDoView */,
+			);
+			path = ToDoListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +424,7 @@
 			files = (
 				E567AB752DD2119000FA92E2 /* HomeView.swift in Sources */,
 				E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */,
+				E5EF8D9B2DD4F62600CF5BB2 /* ToDoListView.swift in Sources */,
 				E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */,
 				E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */,
 				51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */,

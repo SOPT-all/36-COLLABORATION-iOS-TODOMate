@@ -16,7 +16,7 @@ final class HomeViewController: BaseUIViewController {
     // MARK: - Custom Method
 
     override func setUI() {
-        view.addSubviews(homeView)
+        view.addSubview(homeView)
     }
 
     override func setLayout() {
@@ -26,11 +26,17 @@ final class HomeViewController: BaseUIViewController {
     }
 
     override func addTarget() {
-        homeView.categoryButton2.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+        homeView.categoryButton1.addTarget(self, action: #selector(didTapCategoryButton), for: .touchUpInside)
+        homeView.categoryButton3.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+    }
+
+    @objc
+    private func didTapCategoryButton() {
+        homeView.todoListView.addMainTask()
     }
 
     @objc
     private func didTapToolBarButton() {
-        homeView.categoryButton2.isSelected.toggle()
+        homeView.todoListView.addSubTaskToFocused()
     }
 }

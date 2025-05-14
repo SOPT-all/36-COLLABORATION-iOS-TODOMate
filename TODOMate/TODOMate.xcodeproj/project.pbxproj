@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51580CA32DD517FC00B56E7B /* WeekBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9D2DD517FC00B56E7B /* WeekBox.swift */; };
+		51580CA42DD517FC00B56E7B /* WeekBoxIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */; };
+		51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */; };
+		51580CA62DD517FC00B56E7B /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA12DD517FC00B56E7B /* CalenderView.swift */; };
+		51580CAB2DD5180100B56E7B /* FriendsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA72DD5180100B56E7B /* FriendsListCollectionViewCell.swift */; };
+		51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA82DD5180100B56E7B /* FriendsListView.swift */; };
+		51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA92DD5180100B56E7B /* ProfileView.swift */; };
 		51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B777012DD0FBF700A262CE /* UIFont+.swift */; };
 		E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */; };
 		E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F222DCC9790006F43B6 /* SceneDelegate.swift */; };
@@ -29,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51580C9D2DD517FC00B56E7B /* WeekBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBox.swift; sourceTree = "<group>"; };
+		51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBoxIconImage.swift; sourceTree = "<group>"; };
+		51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBoxLabel.swift; sourceTree = "<group>"; };
+		51580CA12DD517FC00B56E7B /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		51580CA72DD5180100B56E7B /* FriendsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListCollectionViewCell.swift; sourceTree = "<group>"; };
+		51580CA82DD5180100B56E7B /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
+		51580CA92DD5180100B56E7B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		51B777012DD0FBF700A262CE /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E5191F032DCC975B006F43B6 /* TODOMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,11 +65,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		51580C252DD4B5E300B56E7B /* Header */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Header;
-			sourceTree = "<group>";
-		};
 		51B7767A2DD0FA7700A262CE /* Font */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Font;
@@ -81,6 +90,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51580CA02DD517FC00B56E7B /* WeekBox */ = {
+			isa = PBXGroup;
+			children = (
+				51580C9D2DD517FC00B56E7B /* WeekBox.swift */,
+				51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */,
+				51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */,
+			);
+			path = WeekBox;
+			sourceTree = "<group>";
+		};
+		51580CA22DD517FC00B56E7B /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				51580CA02DD517FC00B56E7B /* WeekBox */,
+				51580CA12DD517FC00B56E7B /* CalenderView.swift */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
+		51580CAA2DD5180100B56E7B /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				51580CA72DD5180100B56E7B /* FriendsListCollectionViewCell.swift */,
+				51580CA82DD5180100B56E7B /* FriendsListView.swift */,
+				51580CA92DD5180100B56E7B /* ProfileView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		E5191EFA2DCC975B006F43B6 = {
 			isa = PBXGroup;
 			children = (
@@ -194,8 +232,9 @@
 		E567AB682DD20CCB00FA92E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				51580C252DD4B5E300B56E7B /* Header */,
 				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
+				51580CA22DD517FC00B56E7B /* Calender */,
+				51580CAA2DD5180100B56E7B /* Header */,
 				E567AB762DD2119D00FA92E2 /* CustomNavigationBar */,
 				E554C98B2DD125A9002CF37B /* TabBar */,
 			);
@@ -254,7 +293,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				51580C252DD4B5E300B56E7B /* Header */,
 				51B7767A2DD0FA7700A262CE /* Font */,
 				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
 			);
@@ -350,9 +388,16 @@
 				E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */,
 				E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */,
 				51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */,
+				51580CA32DD517FC00B56E7B /* WeekBox.swift in Sources */,
+				51580CA42DD517FC00B56E7B /* WeekBoxIconImage.swift in Sources */,
+				51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */,
+				51580CA62DD517FC00B56E7B /* CalenderView.swift in Sources */,
 				E52CDF0B2DD3AB3700E22E00 /* HomeViewController_nayeon.swift in Sources */,
 				E52CDF0D2DD3AB3900E22E00 /* HomeView_nayeon.swift in Sources */,
 				E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */,
+				51580CAB2DD5180100B56E7B /* FriendsListCollectionViewCell.swift in Sources */,
+				51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */,
+				51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */,
 				E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */,
 				E52CDF072DD3AAD600E22E00 /* HomeViewController_sooyoung.swift in Sources */,
 				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,

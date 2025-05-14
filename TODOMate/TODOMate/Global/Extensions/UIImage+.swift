@@ -16,4 +16,3 @@ extension UIImage {
         return resizedImage.withRenderingMode(self.renderingMode)
     }
 }
-

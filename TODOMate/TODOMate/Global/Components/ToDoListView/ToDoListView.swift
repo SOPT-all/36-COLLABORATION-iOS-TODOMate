@@ -40,7 +40,7 @@ final class TodoListView: BaseUIView {
     // MARK: - Public Methods
 
     func addMainTask() {
-        let todo = makeTodoView(type: .main)
+        let todo = makeTodoView(type: .main, shouldFocus: true)
         stackView.addArrangedSubview(todo)
         todoViews.append(todo)
     }
@@ -56,16 +56,15 @@ final class TodoListView: BaseUIView {
             parentID = todoViews[..<currentIndex].last(where: { $0.taskType == .main })?.id ?? UUID()
         }
 
-        let newSubView = makeTodoView(type: .sub, parentID: parentID)
+        let newSubView = makeTodoView(type: .sub, parentID: parentID, shouldFocus: true)
         stackView.insertArrangedSubview(newSubView, at: currentIndex + 1)
         todoViews.insert(newSubView, at: currentIndex + 1)
     }
 
-
     // MARK: - Private Methods
 
-    private func makeTodoView(type: TodoView.TaskType, parentID: UUID? = nil) -> TodoView {
-        let view = TodoView(taskType: type)
+    private func makeTodoView(type: TodoView.TaskType, parentID: UUID? = nil, shouldFocus: Bool = false) -> TodoView {
+        let view = TodoView(taskType: type, shouldFocus: shouldFocus)
         view.parentMainTaskID = parentID
 
         view.onFocus = { [weak self] in
@@ -93,7 +92,8 @@ final class TodoListView: BaseUIView {
                 }
                 todoViews.removeSubrange(startIndex..<endIndex)
             } else {
-                self.onCommit?(view.id, view.text, view.taskType, view.parentMainTaskID)            }
+                self.onCommit?(view.id, view.text, view.taskType, view.parentMainTaskID)
+            }
         }
 
         view.onToggle = { [weak self] id, isSelected in
@@ -101,5 +101,31 @@ final class TodoListView: BaseUIView {
         }
 
         return view
+    }
+}
+
+/// 처음에 뷰를 그릴때 사용합니다. 로직 조금만더 고민하고, 위로 올릴게용 ㅠ
+extension TodoListView {
+    func configure(with mainTasks: [MainTask]) {
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        todoViews.removeAll()
+
+        for main in mainTasks {
+            let mainView = makeTodoView(type: .main)
+            mainView.id = main.id
+            mainView.text = main.text
+            mainView.isSelected = main.isDone
+            stackView.addArrangedSubview(mainView)
+            todoViews.append(mainView)
+
+            for sub in main.subtasks {
+                let subView = makeTodoView(type: .sub, parentID: main.id)
+                subView.id = sub.id
+                subView.text = sub.text
+                subView.isSelected = sub.isDone
+                stackView.addArrangedSubview(subView)
+                todoViews.append(subView)
+            }
+        }
     }
 }

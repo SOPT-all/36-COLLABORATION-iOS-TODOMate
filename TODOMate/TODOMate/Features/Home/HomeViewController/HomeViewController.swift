@@ -13,6 +13,13 @@ final class HomeViewController: BaseUIViewController {
 
     let homeView = HomeView()
 
+    // MARK: - Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureMockTodos()
+    }
+
     // MARK: - Custom Method
 
     override func setUI() {
@@ -61,6 +68,14 @@ final class HomeViewController: BaseUIViewController {
             }
 
         }
+    }
+
+    ///목데이터 테스트입니다
+    private func configureMockTodos() {
+        let mock = MainTask.mockData()
+        homeView.todoListView1.configure(with: [mock[0]])
+        homeView.todoListView2.configure(with: [mock[1]])
+        homeView.todoListView3.configure(with: [mock[2]])
     }
 
     // MARK: - Action Methods

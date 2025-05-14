@@ -38,6 +38,7 @@
 		E567AB702DD20D1C00FA92E2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E567AB6F2DD20D1C00FA92E2 /* SnapKit */; };
 		E567AB752DD2119000FA92E2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567AB742DD2119000FA92E2 /* HomeView.swift */; };
 		E5EF8D9B2DD4F62600CF5BB2 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EF8D9A2DD4F62600CF5BB2 /* ToDoListView.swift */; };
+		E5EF8DA22DD5343F00CF5BB2 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EF8DA12DD5343F00CF5BB2 /* ToDoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		E567AB742DD2119000FA92E2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E5EF8D9A2DD4F62600CF5BB2 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		E5EF8DA12DD5343F00CF5BB2 /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -310,9 +312,18 @@
 			isa = PBXGroup;
 			children = (
 				E5EF8D9A2DD4F62600CF5BB2 /* ToDoListView.swift */,
+				E5EF8DA02DD5342D00CF5BB2 /* ToDoModel */,
 				E52CDF3A2DD4D50900E22E00 /* ToDoView */,
 			);
 			path = ToDoListView;
+			sourceTree = "<group>";
+		};
+		E5EF8DA02DD5342D00CF5BB2 /* ToDoModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5EF8DA12DD5343F00CF5BB2 /* ToDoModel.swift */,
+			);
+			path = ToDoModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +457,7 @@
 				E52CDF092DD3AAD800E22E00 /* HomeView_sooyoung.swift in Sources */,
 				E52CDF3E2DD4D76A00E22E00 /* UIViewController+.swift in Sources */,
 				E52CDF3C2DD4D52500E22E00 /* ToDoView.swift in Sources */,
+				E5EF8DA22DD5343F00CF5BB2 /* ToDoModel.swift in Sources */,
 				E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */,
 				E5191F272DCC9790006F43B6 /* HomeViewController.swift in Sources */,
 			);

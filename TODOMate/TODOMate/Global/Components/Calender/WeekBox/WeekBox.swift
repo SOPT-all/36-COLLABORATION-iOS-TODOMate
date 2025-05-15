@@ -16,7 +16,7 @@ final class WeekBox: BaseUIView {
     private let monthLabel = UILabel().then {
         $0.font = .cap_bold_12
         $0.textColor = .black
-        $0.text = "2025년 4월"
+        $0.text = CalendarDateFormatter.init().getYearMonthText()
     }
     
     private let checkBoxIcon = WeekBoxIconImage(img: .reIconCheck)

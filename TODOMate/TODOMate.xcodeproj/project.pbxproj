@@ -15,6 +15,7 @@
 		51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA82DD5180100B56E7B /* FriendsListView.swift */; };
 		51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA92DD5180100B56E7B /* ProfileView.swift */; };
 		51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B777012DD0FBF700A262CE /* UIFont+.swift */; };
+		D50E467E2DD646E600C6FB50 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E467D2DD646E500C6FB50 /* Routine.swift */; };
 		D5F3FF842DD51C1700493195 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3FF832DD51C1400493195 /* ToolBar.swift */; };
 		E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */; };
 		E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F222DCC9790006F43B6 /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		51580CA82DD5180100B56E7B /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		51580CA92DD5180100B56E7B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		51B777012DD0FBF700A262CE /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		D50E467D2DD646E500C6FB50 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		D5F3FF832DD51C1400493195 /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		E5191F032DCC975B006F43B6 /* TODOMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D50E467C2DD646DD00C6FB50 /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				D50E467D2DD646E500C6FB50 /* Routine.swift */,
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
 		D5F3FF822DD51BDE00493195 /* ToolBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +287,7 @@
 		E567AB682DD20CCB00FA92E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D50E467C2DD646DD00C6FB50 /* Routine */,
 				D5F3FF822DD51BDE00493195 /* ToolBar */,
 				E5EF8D992DD4F60C00CF5BB2 /* ToDoListView */,
 				E52CDF322DD469D500E22E00 /* Button */,
@@ -463,6 +474,7 @@
 				51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */,
 				51580CA62DD517FC00B56E7B /* CalenderView.swift in Sources */,
 				E52CDF0B2DD3AB3700E22E00 /* HomeViewController_nayeon.swift in Sources */,
+				D50E467E2DD646E600C6FB50 /* Routine.swift in Sources */,
 				E52CDF0D2DD3AB3900E22E00 /* HomeView_nayeon.swift in Sources */,
 				E52CDF372DD46EFB00E22E00 /* CapsuleButton.swift in Sources */,
 				E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */,

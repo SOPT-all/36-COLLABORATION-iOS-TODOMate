@@ -51,7 +51,7 @@ final class CustomDatePicker: BaseUIView {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(datePicker.snp.top).offset(-8)
-            $0.height.equalTo(50)
+            $0.height.equalTo(30)
         }
         
         rightButton.snp.makeConstraints {

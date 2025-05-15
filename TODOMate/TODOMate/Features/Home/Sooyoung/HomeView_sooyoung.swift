@@ -14,11 +14,12 @@ final class HomeView_sooyoung: BaseUIView {
     // MARK: - UI Components
 
     let datePicker = CustomDatePicker()
+    let toolbar = ToolBar()
 
     // MARK: - Custom Methods
 
     override func setUI() {
-        [datePicker].forEach {
+        [datePicker, toolbar].forEach {
             addSubview($0)
         }
     }
@@ -28,6 +29,11 @@ final class HomeView_sooyoung: BaseUIView {
             $0.top.equalTo(safeAreaLayoutGuide).inset(100)
             $0.leading.trailing.equalToSuperview()
             $0.height.greaterThanOrEqualTo(200)
+        }
+        
+        toolbar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(datePicker.snp.top).offset(-40)
         }
     }
 }

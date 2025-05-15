@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		512563D32DD5A686009D1791 /* CalendarDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512563D22DD5A67F009D1791 /* CalendarDateFormatter.swift */; };
+		513A22B52DD51FDC00F28836 /* WeekCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A22B42DD51FD800F28836 /* WeekCalendar.swift */; };
+		513A22B72DD5215F00F28836 /* CalendarDayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A22B62DD5215500F28836 /* CalendarDayLabel.swift */; };
+		513A22BB2DD5222600F28836 /* WeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A22BA2DD5222600F28836 /* WeekCollectionViewCell.swift */; };
 		51580CA32DD517FC00B56E7B /* WeekBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9D2DD517FC00B56E7B /* WeekBox.swift */; };
 		51580CA42DD517FC00B56E7B /* WeekBoxIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */; };
 		51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */; };
-		51580CA62DD517FC00B56E7B /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA12DD517FC00B56E7B /* CalenderView.swift */; };
+		51580CA62DD517FC00B56E7B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA12DD517FC00B56E7B /* CalendarView.swift */; };
 		51580CAB2DD5180100B56E7B /* FriendsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA72DD5180100B56E7B /* FriendsListCollectionViewCell.swift */; };
 		51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA82DD5180100B56E7B /* FriendsListView.swift */; };
 		51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA92DD5180100B56E7B /* ProfileView.swift */; };
@@ -42,10 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		512563D22DD5A67F009D1791 /* CalendarDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateFormatter.swift; sourceTree = "<group>"; };
+		513A22B42DD51FD800F28836 /* WeekCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendar.swift; sourceTree = "<group>"; };
+		513A22B62DD5215500F28836 /* CalendarDayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayLabel.swift; sourceTree = "<group>"; };
+		513A22BA2DD5222600F28836 /* WeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollectionViewCell.swift; sourceTree = "<group>"; };
 		51580C9D2DD517FC00B56E7B /* WeekBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBox.swift; sourceTree = "<group>"; };
 		51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBoxIconImage.swift; sourceTree = "<group>"; };
 		51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBoxLabel.swift; sourceTree = "<group>"; };
-		51580CA12DD517FC00B56E7B /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
+		51580CA12DD517FC00B56E7B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		51580CA72DD5180100B56E7B /* FriendsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListCollectionViewCell.swift; sourceTree = "<group>"; };
 		51580CA82DD5180100B56E7B /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		51580CA92DD5180100B56E7B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -102,6 +110,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		513A22B32DD51FAF00F28836 /* WeekCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				512563D22DD5A67F009D1791 /* CalendarDateFormatter.swift */,
+				513A22B62DD5215500F28836 /* CalendarDayLabel.swift */,
+				513A22B42DD51FD800F28836 /* WeekCalendar.swift */,
+				513A22BA2DD5222600F28836 /* WeekCollectionViewCell.swift */,
+			);
+			path = WeekCalendar;
+			sourceTree = "<group>";
+		};
 		51580CA02DD517FC00B56E7B /* WeekBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,8 +134,9 @@
 		51580CA22DD517FC00B56E7B /* Calender */ = {
 			isa = PBXGroup;
 			children = (
+				513A22B32DD51FAF00F28836 /* WeekCalendar */,
 				51580CA02DD517FC00B56E7B /* WeekBox */,
-				51580CA12DD517FC00B56E7B /* CalenderView.swift */,
+				51580CA12DD517FC00B56E7B /* CalendarView.swift */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -433,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512563D32DD5A686009D1791 /* CalendarDateFormatter.swift in Sources */,
 				E567AB752DD2119000FA92E2 /* HomeView.swift in Sources */,
 				E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */,
 				E5EF8D9B2DD4F62600CF5BB2 /* ToDoListView.swift in Sources */,
@@ -442,15 +463,18 @@
 				E52CDF392DD4741A00E22E00 /* UIImage+.swift in Sources */,
 				51580CA32DD517FC00B56E7B /* WeekBox.swift in Sources */,
 				51580CA42DD517FC00B56E7B /* WeekBoxIconImage.swift in Sources */,
+				513A22BB2DD5222600F28836 /* WeekCollectionViewCell.swift in Sources */,
 				51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */,
-				51580CA62DD517FC00B56E7B /* CalenderView.swift in Sources */,
+				51580CA62DD517FC00B56E7B /* CalendarView.swift in Sources */,
 				E52CDF0B2DD3AB3700E22E00 /* HomeViewController_nayeon.swift in Sources */,
 				E52CDF0D2DD3AB3900E22E00 /* HomeView_nayeon.swift in Sources */,
 				E52CDF372DD46EFB00E22E00 /* CapsuleButton.swift in Sources */,
 				E5191F382DCC9A09006F43B6 /* BaseUIViewController.swift in Sources */,
+				513A22B52DD51FDC00F28836 /* WeekCalendar.swift in Sources */,
 				51580CAB2DD5180100B56E7B /* FriendsListCollectionViewCell.swift in Sources */,
 				51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */,
 				51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */,
+				513A22B72DD5215F00F28836 /* CalendarDayLabel.swift in Sources */,
 				E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */,
 				E52CDF072DD3AAD600E22E00 /* HomeViewController_sooyoung.swift in Sources */,
 				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,

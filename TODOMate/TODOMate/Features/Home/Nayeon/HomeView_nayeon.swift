@@ -16,7 +16,7 @@ final class HomeView_nayeon: BaseUIView {
     let navigationBar = CustomNavigationBar()
     let friendsListView = FriendsListView()
     let profileView = ProfileView()
-    let calenderView = CalenderView()
+    let calenderView = CalendarView()
 
     // MARK: - Custom Methods
 

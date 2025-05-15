@@ -10,21 +10,27 @@ import UIKit
 import SnapKit
 import Then
 
-final class CalenderView: BaseUIView {
+final class CalendarView: BaseUIView {
     
     // MARK: - UI Components
     
     private let weekBox = WeekBox()
+    private let weekCalendar = WeekCalendar()
     
     // MARK: - SetUp Method
     
     override func setUI() {
-        addSubviews(weekBox)
+        addSubviews(weekBox, weekCalendar)
     }
     
     override func setLayout() {
         weekBox.snp.makeConstraints {
             $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(24)
+        }
+        
+        weekCalendar.snp.makeConstraints {
+            $0.top.equalTo(weekBox.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(24)
         }
     }

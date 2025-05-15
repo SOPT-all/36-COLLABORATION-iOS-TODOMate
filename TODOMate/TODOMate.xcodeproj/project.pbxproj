@@ -19,6 +19,7 @@
 		51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA82DD5180100B56E7B /* FriendsListView.swift */; };
 		51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580CA92DD5180100B56E7B /* ProfileView.swift */; };
 		51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B777012DD0FBF700A262CE /* UIFont+.swift */; };
+		D5F3FF842DD51C1700493195 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3FF832DD51C1400493195 /* ToolBar.swift */; };
 		E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */; };
 		E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F222DCC9790006F43B6 /* SceneDelegate.swift */; };
 		E5191F272DCC9790006F43B6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F232DCC9790006F43B6 /* HomeViewController.swift */; };
@@ -58,6 +59,7 @@
 		51580CA82DD5180100B56E7B /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
 		51580CA92DD5180100B56E7B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		51B777012DD0FBF700A262CE /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		D5F3FF832DD51C1400493195 /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		E5191F032DCC975B006F43B6 /* TODOMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5191F1C2DCC9790006F43B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 				513A22BA2DD5222600F28836 /* WeekCollectionViewCell.swift */,
 			);
 			path = WeekCalendar;
+			sourceTree = "<group>";
+		};
+		D5F3FF822DD51BDE00493195 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				D5F3FF832DD51C1400493195 /* ToolBar.swift */,
+			);
+			path = ToolBar;
 			sourceTree = "<group>";
 		};
 		51580CA02DD517FC00B56E7B /* WeekBox */ = {
@@ -287,6 +297,7 @@
 		E567AB682DD20CCB00FA92E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D5F3FF822DD51BDE00493195 /* ToolBar */,
 				E5EF8D992DD4F60C00CF5BB2 /* ToDoListView */,
 				E52CDF322DD469D500E22E00 /* Button */,
 				D5D66FCE2DD487D4003C7C55 /* CustomDatePicker */,
@@ -466,6 +477,7 @@
 				E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */,
 				E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */,
 				51B777022DD0FBFE00A262CE /* UIFont+.swift in Sources */,
+				D5F3FF842DD51C1700493195 /* ToolBar.swift in Sources */,
 				E52CDF392DD4741A00E22E00 /* UIImage+.swift in Sources */,
 				51580CA32DD517FC00B56E7B /* WeekBox.swift in Sources */,
 				51580CA42DD517FC00B56E7B /* WeekBoxIconImage.swift in Sources */,

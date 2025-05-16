@@ -57,7 +57,7 @@ final class Routine: BaseUIView {
     }
     
     private func setupOptions() {
-        RepeatOption.allCases.forEach { option in
+        RepeatOption.allCases.enumerated().forEach { (idx, option) in
             let button = UIButton().then {
                 $0.setTitle(option.title, for: .normal)
                 $0.titleLabel?.font = .cap_reg_12
@@ -70,6 +70,15 @@ final class Routine: BaseUIView {
                 $0.backgroundColor = .grey20
                 $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
                 $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+                $0.clipsToBounds = true
+                
+                if idx == 0 {
+                    $0.layer.cornerRadius = 15
+                    $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                } else if idx == RepeatOption.allCases.count - 1 {
+                    $0.layer.cornerRadius = 15
+                    $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                }
             }
             optionStackView.addArrangedSubview(button)
         }

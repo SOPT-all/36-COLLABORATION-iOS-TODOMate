@@ -12,25 +12,22 @@ import Then
 
 final class ToolBar: BaseUIView {
     
-    private let detailButton = UIButton().then {
-        $0.setTitle("세부사항", for: .normal)
-        $0.titleLabel?.font = .cap_semi_12
-        $0.layer.cornerRadius = 25
-        $0.backgroundColor = .bluegrey10
+    private let detailButton = CapsuleButton().then {
+        $0.type = .toolBar
+        $0.text = "세부사항"
+        $0.leftIcon = .reIconDetailGrey
     }
     
-    private let routineButton = UIButton().then {
-        $0.setTitle("루틴등록", for: .normal)
-        $0.titleLabel?.font = .cap_semi_12
-        $0.layer.cornerRadius = 25
-        $0.backgroundColor = .bluegrey10
+    private let routineButton = CapsuleButton().then {
+        $0.type = .toolBar
+        $0.text = "루틴등록"
+        $0.leftIcon = .reIconRoutinGrey
     }
     
-    private let importantButton = UIButton().then {
-        $0.setTitle("중요도", for: .normal)
-        $0.titleLabel?.font = .cap_semi_12
-        $0.layer.cornerRadius = 25
-        $0.backgroundColor = .bluegrey10
+    private let importantButton = CapsuleButton().then {
+        $0.type = .toolBar
+        $0.text = "중요도"
+        $0.leftIcon = .reIconPriorityGrey
     }
     
     private let trashButton = UIButton().then {
@@ -63,17 +60,14 @@ final class ToolBar: BaseUIView {
     
     override func setLayout() {
         detailButton.snp.makeConstraints {
-            $0.width.equalTo(92)
             $0.height.equalTo(32)
         }
         
         routineButton.snp.makeConstraints {
-            $0.width.equalTo(90)
             $0.height.equalTo(32)
         }
         
         importantButton.snp.makeConstraints {
-            $0.width.equalTo(72)
             $0.height.equalTo(32)
         }
         

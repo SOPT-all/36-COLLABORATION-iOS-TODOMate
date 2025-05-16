@@ -47,16 +47,18 @@ final class Routine: BaseUIView {
     private let completeButton = UIButton().then {
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.grey10, for: .normal)
+        $0.titleLabel?.font = .cap_reg_12
     }
     
     private lazy var optionStackView = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 5
+        $0.distribution = .fillEqually
     }
     
     private func setupOptions() {
         RepeatOption.allCases.forEach { option in
-            let button = UIButton().then {
+            let button = UIButton(type: .custom).then {
                 $0.setTitle(option.title, for: .normal)
                 $0.titleLabel?.font = .cap_reg_12
                 $0.setTitleColor(.black, for: .normal)
@@ -66,6 +68,8 @@ final class Routine: BaseUIView {
                 $0.addTarget(self, action: #selector(optionTapped(_:)), for: .touchUpInside)
                 $0.tag = optionIndex(option)
                 $0.backgroundColor = .grey20
+                $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+                $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
             }
             optionStackView.addArrangedSubview(button)
         }
@@ -86,7 +90,7 @@ final class Routine: BaseUIView {
         leftButton.snp.makeConstraints {
             $0.centerY.equalTo(title)
             $0.leading.equalToSuperview().offset(16)
-            $0.size.equalTo(24)
+            $0.width.height.equalTo(14)
         }
 
         completeButton.snp.makeConstraints {
@@ -99,11 +103,14 @@ final class Routine: BaseUIView {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(250)
         }
+        
+        setupOptions()
     }
     
     @objc private func optionTapped(_ sender: UIButton) {
         let index = sender.tag
         selectedOption = RepeatOption.allCases[index]
+        print("🔘 선택된 옵션: \(selectedOption!)")
 
         for (i, view) in optionStackView.arrangedSubviews.enumerated() {
             if let button = view as? UIButton {
@@ -112,6 +119,7 @@ final class Routine: BaseUIView {
         }
         completeButton.setTitleColor(.black, for: .normal)
     }
+
     
     private func optionIndex(_ option: RepeatOption) -> Int {
         return RepeatOption.allCases.firstIndex(of: option) ?? 0

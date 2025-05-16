@@ -1,8 +1,8 @@
 //
-//  Priority_Routine.swift
+//  Priority.swift
 //  TODOMate
 //
-//  Created by LEESOOYONG on 5/15/25.
+//  Created by LEESOOYONG on 5/16/25.
 //
 
 import UIKit
@@ -10,38 +10,38 @@ import UIKit
 import SnapKit
 import Then
 
-enum RepeatOption: CaseIterable {
-    case daily, weekly, biweekly, monthly, yearly
+enum PriorityOption: CaseIterable {
+    case high, mid, low
     
     var title: String {
         switch self {
-        case .daily:
-            return "매일"
-        case .weekly:
-            return "매주"
-        case .biweekly:
-            return "격주"
-        case .monthly:
-            return "매월"
-        case .yearly:
-            return "매년"
+        case .high:
+            return "상"
+        case .mid:
+            return "중"
+        case .low:
+            return "하"
+        }
+    }
+    
+    var color: UIImage {
+        switch self {
+        case .high: return .reIconPriorityHigh
+        case .mid: return .reIconPriorityMid
+        case .low: return .reIconPriorityLow
         }
     }
 }
 
-final class Routine: BaseUIView {
+final class Priority: BaseUIView {
     
-    private var selectedOption: RepeatOption?
+    private var selectedOption: PriorityOption?
     
     private let title = UILabel().then {
-        $0.text = "반복"
+        $0.text = "중요도"
         $0.textColor = .black
         $0.font = .body_reg_14
         $0.textAlignment = .center
-    }
-    
-    private let leftButton = UIButton().then {
-        $0.setImage(.reIconRoutineBeforeBlack, for: .normal)
     }
     
     private let completeButton = UIButton().then {
@@ -57,7 +57,7 @@ final class Routine: BaseUIView {
     }
     
     private func setupOptions() {
-        RepeatOption.allCases.forEach { option in
+        PriorityOption.allCases.forEach { option in
             let button = UIButton().then {
                 $0.setTitle(option.title, for: .normal)
                 $0.titleLabel?.font = .cap_reg_12
@@ -71,12 +71,25 @@ final class Routine: BaseUIView {
                 $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
                 $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
             }
+            
+            let rightImageView = UIImageView().then {
+                $0.image = option.color
+                $0.contentMode = .scaleAspectFit
+            }
+
+            button.addSubview(rightImageView)
+            rightImageView.snp.makeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.trailing.equalToSuperview().inset(12)
+                $0.width.height.equalTo(14)
+            }
+            
             optionStackView.addArrangedSubview(button)
         }
     }
     
     override func setUI() {
-        [title, leftButton, completeButton, optionStackView].forEach {
+        [title, completeButton, optionStackView].forEach {
             addSubviews($0)
         }
     }
@@ -87,12 +100,6 @@ final class Routine: BaseUIView {
             $0.centerX.equalToSuperview()
         }
 
-        leftButton.snp.makeConstraints {
-            $0.centerY.equalTo(title)
-            $0.leading.equalToSuperview().offset(16)
-            $0.width.height.equalTo(14)
-        }
-
         completeButton.snp.makeConstraints {
             $0.centerY.equalTo(title)
             $0.trailing.equalToSuperview().inset(16)
@@ -101,7 +108,7 @@ final class Routine: BaseUIView {
         optionStackView.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(250)
+            $0.height.equalTo(140)
         }
         
         setupOptions()
@@ -109,7 +116,7 @@ final class Routine: BaseUIView {
     
     @objc private func optionTapped(_ sender: UIButton) {
         let index = sender.tag
-        selectedOption = RepeatOption.allCases[index]
+        selectedOption = PriorityOption.allCases[index]
 
         for (i, view) in optionStackView.arrangedSubviews.enumerated() {
             if let button = view as? UIButton {
@@ -120,8 +127,7 @@ final class Routine: BaseUIView {
     }
 
     
-    private func optionIndex(_ option: RepeatOption) -> Int {
-        return RepeatOption.allCases.firstIndex(of: option) ?? 0
+    private func optionIndex(_ option: PriorityOption) -> Int {
+        return PriorityOption.allCases.firstIndex(of: option) ?? 0
     }
 }
-

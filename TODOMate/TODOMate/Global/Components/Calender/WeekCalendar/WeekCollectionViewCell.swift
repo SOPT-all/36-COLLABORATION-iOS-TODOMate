@@ -24,6 +24,7 @@ final class WeekCollectionViewCell: UICollectionViewCell {
     
     private let dayLabel = CalendarDayLabel().then {
         $0.text = "0"
+        $0.clipsToBounds = true
     }
     
     // MARK: - Setup Method
@@ -50,12 +51,14 @@ final class WeekCollectionViewCell: UICollectionViewCell {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.width.height.equalTo(20)
+            $0.centerX.equalToSuperview()
         }
         
         dayLabel.snp.makeConstraints {
             $0.top.equalTo(checkIconButton.snp.bottom).offset(7)
             $0.leading.trailing.equalToSuperview()
             $0.width.height.equalTo(19)
+            $0.centerX.equalToSuperview()
         }
     }
 }
@@ -64,25 +67,20 @@ extension WeekCollectionViewCell {
     func dataBind(date: String, isToday: Bool, isSelected: Bool, isSaturday: Bool, isSunday: Bool) {
         dayLabel.text = date
         
-        if isSaturday {
-            dayLabel.textColor = .blue20
-        } else if isSunday {
-            dayLabel.textColor = .red10
-        }
-
         if isSelected {
-            changeCellBackgroundColor()
-        } else if isToday {
-            changeCellBackgroundColor()
+            dayLabel.backgroundColor = .black
+            dayLabel.layer.cornerRadius = 10
+            dayLabel.textColor = .white
         } else {
-            contentView.backgroundColor = .clear
-        }
-    }
-    
-    func changeCellBackgroundColor() {
-        dayLabel.backgroundColor = .black
-        dayLabel.layer.cornerRadius = 10
-        dayLabel.clipsToBounds = true
-        dayLabel.textColor = .white
+           dayLabel.backgroundColor = .white
+           if isSaturday {
+               dayLabel.textColor = .blue20
+           } else if isSunday {
+               dayLabel.textColor = .red10
+           } else {
+               dayLabel.textColor = .black
+           }
+       }
+        
     }
 }

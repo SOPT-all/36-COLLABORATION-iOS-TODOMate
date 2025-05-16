@@ -24,5 +24,11 @@ final class HomeViewController_sooyoung: BaseUIViewController {
         homeView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        homeView.toolbar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
+            $0.height.equalTo(50)
+        }
     }
 }

@@ -14,10 +14,10 @@ final class WeekCalendar: BaseUIView {
 
     // MARK: - Properties
     
-        private let formatter = CalendarDateFormatter()
-        private var weekDates: [String] = []
-        private lazy var selectedIndex = formatter.getTodayDay()
-    
+    private let formatter = CalendarDateFormatter()
+    private var weekDates: [String] = []
+    private lazy var selectedIndex = formatter.getTodayDay()
+
     // MARK: - UI Componets
     
     private let weekStackView = UIStackView().then {
@@ -94,6 +94,7 @@ final class WeekCalendar: BaseUIView {
         flowLayout.itemSize = CGSize(width: cellWidth, height: cellHeight)
         flowLayout.scrollDirection = .horizontal
         flowLayout.collectionView?.isScrollEnabled = false
+        flowLayout.collectionView?.isUserInteractionEnabled = true
         flowLayout.minimumLineSpacing = spacing
         self.weekCollectionView.setCollectionViewLayout(flowLayout, animated: false)
         
@@ -122,11 +123,6 @@ extension WeekCalendar: UICollectionViewDataSource {
         let isSelected = selectedIndex == indexPath.item
         let isSaturday = indexPath.item == 5
         let isSunday = indexPath.item == 6
-        print("오늘날짜는?", dateText)
-        print("오늘날짜인가요?", isToday)
-        print("선택되었나요?", isSelected)
-        print("토요일인가요?", isSaturday)
-        print("일요일?", isSunday)
         cell.dataBind(date: dateText, isToday: isToday, isSelected: isSelected, isSaturday: isSaturday, isSunday: isSunday)
         return cell
     }
@@ -137,11 +133,9 @@ extension WeekCalendar: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
-        print("바뀐 인덱스", selectedIndex)
         weekCollectionView.reloadData()
     }
 }
 
 extension WeekCalendar: UICollectionViewDelegate {
-    
 }

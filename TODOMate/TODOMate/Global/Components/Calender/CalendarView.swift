@@ -27,11 +27,13 @@ final class CalendarView: BaseUIView {
         weekBox.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(25)
         }
         
         weekCalendar.snp.makeConstraints {
             $0.top.equalTo(weekBox.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(65)
         }
     }
 }

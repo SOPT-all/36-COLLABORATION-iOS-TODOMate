@@ -12,25 +12,25 @@ import Then
 
 final class ToolBar: BaseUIView {
     
-    private let detailButton = CapsuleButton().then {
+    let detailButton = CapsuleButton().then {
         $0.type = .toolBar
         $0.text = "세부사항"
         $0.leftIcon = .reIconDetailGrey
     }
     
-    private let routineButton = CapsuleButton().then {
+    let routineButton = CapsuleButton().then {
         $0.type = .toolBar
         $0.text = "루틴등록"
         $0.leftIcon = .reIconRoutinGrey
     }
     
-    private let importantButton = CapsuleButton().then {
+    let importantButton = CapsuleButton().then {
         $0.type = .toolBar
         $0.text = "중요도"
         $0.leftIcon = .reIconPriorityGrey
     }
     
-    private let trashButton = UIButton().then {
+    let trashButton = UIButton().then {
         $0.setImage(.reDelete, for: .normal)
     }
     

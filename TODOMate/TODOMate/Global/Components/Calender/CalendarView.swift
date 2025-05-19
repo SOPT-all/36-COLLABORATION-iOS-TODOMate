@@ -15,7 +15,7 @@ final class CalendarView: BaseUIView {
     // MARK: - UI Components
     
     private let weekBox = WeekBox()
-    private let weekCalendar = WeekCalendar()
+    public let weekCalendar = WeekCalendar()
     
     // MARK: - SetUp Method
     

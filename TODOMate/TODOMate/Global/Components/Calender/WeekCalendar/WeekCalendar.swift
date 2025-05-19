@@ -11,12 +11,14 @@ import SnapKit
 import Then
 
 final class WeekCalendar: BaseUIView {
-
+    
     // MARK: - Properties
     
     private let formatter = CalendarDateFormatter()
     private var weekDates: [String] = []
+    public var selectedDate: String = ""
     private lazy var selectedIndex = formatter.getTodayDay()
+    private var offset: Int = 0
 
     // MARK: - UI Componets
     
@@ -68,7 +70,7 @@ final class WeekCalendar: BaseUIView {
         
         setWeekCollectionViewFlowLayout()
         registerWeekCollectionViewCell()
-        setDate()
+        setDate(offset)
     }
     
     override func setLayout() {
@@ -106,8 +108,8 @@ final class WeekCalendar: BaseUIView {
         weekCollectionView.dataSource = self
     }
     
-    private func setDate() {
-        weekDates = formatter.getDateStringsOfThisWeek()
+    private func setDate(_ offset: Int) {
+        weekDates = formatter.getDateStringsOfWeek(offset: offset)
         weekCollectionView.reloadData()
     }
 }
@@ -118,12 +120,9 @@ extension WeekCalendar: UICollectionViewDataSource {
             return WeekCollectionViewCell()
         }
         
-        let dateText = weekDates[indexPath.item]
-        let isToday = dateText == formatter.getTodayDate()
+        let date = weekDates[indexPath.item]
         let isSelected = selectedIndex == indexPath.item
-        let isSaturday = indexPath.item == 5
-        let isSunday = indexPath.item == 6
-        cell.dataBind(date: dateText, isToday: isToday, isSelected: isSelected, isSaturday: isSaturday, isSunday: isSunday)
+        cell.dataBind(date: date, isSelected: isSelected, index: indexPath.item)
         return cell
     }
     
@@ -133,9 +132,25 @@ extension WeekCalendar: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
+        selectedDate = weekDates[selectedIndex]
+        print("선택된 날짜는요", selectedDate)
         weekCollectionView.reloadData()
     }
 }
 
 extension WeekCalendar: UICollectionViewDelegate {
+}
+
+extension WeekCalendar: WeekBoxMoveButtonDelegate {
+    func didTapPreMoveButton() {
+        print("전주 보여주세요")
+        offset -= 1
+        setDate(offset)
+    }
+    
+    func didTapRightMoveButton() {
+        print("다음주 보여주세요")
+        offset += 1
+        setDate(offset)
+    }
 }

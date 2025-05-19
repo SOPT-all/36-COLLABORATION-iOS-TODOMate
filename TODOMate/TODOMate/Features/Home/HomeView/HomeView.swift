@@ -13,8 +13,10 @@ final class HomeView: BaseUIView {
 
     let navigationBar = CustomNavigationBar()
 
+    let toolbar = ToolBar()
+
     private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    let contentView = UIView()
 
     let categoryButton1 = CapsuleButton().then {
         $0.type = .category
@@ -48,7 +50,7 @@ final class HomeView: BaseUIView {
     // MARK: - Custom Methods
 
     override func setUI() {
-        addSubviews(navigationBar, scrollView)
+        addSubviews(navigationBar, scrollView, toolbar)
         scrollView.addSubview(contentView)
 
         contentView.addSubviews(
@@ -74,6 +76,12 @@ final class HomeView: BaseUIView {
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalTo(scrollView)
+        }
+
+        toolbar.snp.remakeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(50)
         }
 
         categoryButton1.snp.makeConstraints {

@@ -16,8 +16,8 @@ final class WeekCalendar: BaseUIView {
     
     private let formatter = CalendarDateFormatter()
     private var weekDates: [String] = []
-    public var selectedDate: String = ""
     private lazy var selectedIndex = formatter.getTodayDay()
+    public lazy var selectedDate: String = weekDates[selectedIndex]
     private var offset: Int = 0
 
     // MARK: - UI Componets

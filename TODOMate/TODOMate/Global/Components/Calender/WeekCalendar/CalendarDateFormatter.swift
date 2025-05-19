@@ -21,10 +21,9 @@ final class CalendarDateFormatter {
     private let dateFormatter = DateFormatter()
     private var nowCalendarDate = Date()
     private var dates = [String]()
-    private var weekDates: [String] = []
     
     init() {
-        calendarFormatter.dateFormat = "yyMMdd"
+        calendarFormatter.dateFormat = "yyyy-MM-dd"
         monthFormatter.dateFormat = "yyyy년 MM월"
         monthFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "d"
@@ -48,6 +47,7 @@ final class CalendarDateFormatter {
             return []
         }
 
+        var weekDates: [String] = []
         for i in 0..<7 {
             if let date = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
                 weekDates.append(calendarFormatter.string(from: date))
@@ -56,19 +56,14 @@ final class CalendarDateFormatter {
         print("이번주는요 ", weekDates)
         return weekDates
     }
-    
-    func getDateStringOfWeek(_ offset: Int) -> [String] {
-        let dateStrings = getWeekDateStringsOfWeek(offset)
-        return dateStrings.map { String($0.suffix(2)) }
-    }
-    
+        
     func getDayOfWeek(from date: String) -> Int {
         let dayIndex = calendar.component(.weekday, from: nowCalendarDate)
         return (dayIndex + 5) % 7
     }
     
     func getTodayDate() -> String {
-        let todayDate = self.dateFormatter.string(from: nowCalendarDate)
+        let todayDate = self.calendarFormatter.string(from: nowCalendarDate)
         return todayDate
     }
     

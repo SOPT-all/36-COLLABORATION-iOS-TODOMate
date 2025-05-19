@@ -14,7 +14,7 @@ final class HomeViewController_nayeon: BaseUIViewController {
     // MARK: - UI Components
 
     let homeView = HomeView_nayeon()
-
+    
     // MARK: - Custom Method
 
     override func setUI() {
@@ -26,4 +26,9 @@ final class HomeViewController_nayeon: BaseUIViewController {
             $0.edges.equalToSuperview()
         }
     }
+    
+    private func getSelectedDate() -> String {
+        return homeView.calenderView.weekCalendar.selectedDate
+    }
+    
 }

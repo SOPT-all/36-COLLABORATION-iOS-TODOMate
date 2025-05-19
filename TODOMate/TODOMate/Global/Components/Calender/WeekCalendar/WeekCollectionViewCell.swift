@@ -61,10 +61,23 @@ final class WeekCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
         }
     }
+    
+    private func changeDayLabelColor(_ index: Int) {
+        dayLabel.backgroundColor = .clear
+        
+        switch index {
+        case 5:
+            dayLabel.textColor = .blue20
+        case 6:
+            dayLabel.textColor = .red10
+        default:
+            dayLabel.textColor = .black
+        }
+    }
 }
 
 extension WeekCollectionViewCell {
-    func dataBind(date: String, isToday: Bool, isSelected: Bool, isSaturday: Bool, isSunday: Bool) {
+    func dataBind(date: String, isSelected: Bool, index: Int) {
         dayLabel.text = date
         
         if isSelected {
@@ -72,15 +85,7 @@ extension WeekCollectionViewCell {
             dayLabel.layer.cornerRadius = 10
             dayLabel.textColor = .white
         } else {
-           dayLabel.backgroundColor = .white
-           if isSaturday {
-               dayLabel.textColor = .blue20
-           } else if isSunday {
-               dayLabel.textColor = .red10
-           } else {
-               dayLabel.textColor = .black
-           }
+           changeDayLabelColor(index)
        }
-        
     }
 }

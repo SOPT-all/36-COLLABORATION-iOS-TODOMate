@@ -57,11 +57,6 @@ final class CalendarDateFormatter {
         return weekDates
     }
         
-    func getDayOfWeek(from date: String) -> Int {
-        let dayIndex = calendar.component(.weekday, from: nowCalendarDate)
-        return (dayIndex + 5) % 7
-    }
-    
     func getTodayDate() -> String {
         let todayDate = self.calendarFormatter.string(from: nowCalendarDate)
         return todayDate

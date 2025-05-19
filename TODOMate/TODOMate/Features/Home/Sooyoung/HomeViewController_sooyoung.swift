@@ -14,21 +14,24 @@ final class HomeViewController_sooyoung: BaseUIViewController {
     let homeView = HomeView_sooyoung()
 
     // MARK: - Custom Method
+    
+    var keyboardHeight: CGFloat = 0
 
     override func setUI() {
         view.addSubviews(homeView)
         view.backgroundColor = .white
+        
+        homeView.toolbar.detailButton.accessibilityIdentifier = "detailButton"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupKeyboardObservers()
     }
 
     override func setLayout() {
         homeView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-        }
-        
-        homeView.toolbar.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
-            $0.height.equalTo(50)
         }
     }
     
@@ -36,20 +39,100 @@ final class HomeViewController_sooyoung: BaseUIViewController {
         homeView.toolbar.detailButton.addTarget(self, action: #selector(didTapDetailButton), for: .touchUpInside)
         homeView.toolbar.routineButton.addTarget(self, action: #selector(didTapRoutineButton), for: .touchUpInside)
         homeView.toolbar.importantButton.addTarget(self, action: #selector(didTapPriorityButton), for: .touchUpInside)
+        homeView.routine.completeButton.addTarget(self, action: #selector(didTapRoutineCompleteButton), for: .touchUpInside)
+        homeView.priority.completeButton.addTarget(self, action: #selector(didTapProrityCompleteButton), for: .touchUpInside)
+        homeView.datePicker.endRightButton.addTarget(self, action: #selector(didTapEndRightButton), for: .touchUpInside)
+    }
+    
+    @objc
+    override func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc
     private func didTapDetailButton() {
-        homeView.toolbar.detailButton.isSelected.toggle()
+        homeView.toolbar.detailButton.isSelected = true
+        homeView.textField.becomeFirstResponder()
     }
     
     @objc
     private func didTapRoutineButton() {
-        homeView.toolbar.routineButton.isSelected.toggle()
+        homeView.toolbar.routineButton.isSelected = true
+        if(homeView.toolbar.routineButton.isSelected) {
+            homeView.datePicker.isHidden = false
+            homeView.routine.isHidden = true
+            homeView.priority.isHidden = true
+            tabBarController?.tabBar.isHidden = true
+        }
+        homeView.datePicker.isHidden = false
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc
     private func didTapPriorityButton() {
-        homeView.toolbar.importantButton.isSelected.toggle()
+        homeView.toolbar.importantButton.isSelected = true
+        if(homeView.toolbar.importantButton.isSelected) {
+            homeView.datePicker.isHidden = true
+            homeView.routine.isHidden = true
+            homeView.priority.isHidden = false
+            tabBarController?.tabBar.isHidden = true
+        }
+        homeView.priority.isHidden = false
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    @objc
+    private func didTapEndRightButton() {
+        homeView.datePicker.isHidden = true
+        homeView.routine.isHidden = false
+    }
+    
+    @objc
+    private func didTapRoutineCompleteButton() {
+        homeView.routine.isHidden = true
+        homeView.textField.becomeFirstResponder()
+    }
+    
+    @objc
+    private func didTapProrityCompleteButton() {
+        homeView.priority.isHidden = true
+        homeView.textField.becomeFirstResponder()
+    }
+    
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        let info = notification.userInfo
+            if let keyboardSize = info?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            keyboardHeight = keyboardSize.height
+            homeView.toolbar.snp.updateConstraints {
+                $0.bottom.equalToSuperview().inset(keyboardHeight)
+            }
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+//        homeView.toolbar.snp.updateConstraints {
+//            $0.bottom.equalToSuperview()
+//        }
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }

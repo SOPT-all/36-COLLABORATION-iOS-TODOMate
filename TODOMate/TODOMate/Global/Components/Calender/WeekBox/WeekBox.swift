@@ -10,13 +10,24 @@ import UIKit
 import SnapKit
 import Then
 
+protocol WeekBoxMoveButtonDelegate: AnyObject {
+    func didTapPreMoveButton()
+    func didTapRightMoveButton()
+}
+
 final class WeekBox: BaseUIView {
     
+    // MARK: - Properties
+    weak var delegate: WeekBoxMoveButtonDelegate?
+    
+    private let formatter = CalendarDateFormatter()
+    private var monthOffset: Int = 0
+    
     // MARK: - UI Components
-    private let monthLabel = UILabel().then {
+    private lazy var monthLabel = UILabel().then {
         $0.font = .cap_bold_12
         $0.textColor = .black
-        $0.text = CalendarDateFormatter.init().getYearMonthText()
+        $0.text = formatter.getYearMonthText(monthOffset)
     }
     
     private let checkBoxIcon = WeekBoxIconImage(img: .reIconCheck)
@@ -28,14 +39,16 @@ final class WeekBox: BaseUIView {
     private let heartIcon = WeekBoxIconImage(img: .reIconHeart)
     private let heartCount = WeekBoxLabel()
     
-    private let leftMoveIcon = UIButton().then {
+    private lazy var leftMoveIcon = UIButton().then {
         $0.setBackgroundImage(.reIconMoveLeft, for: .normal)
         $0.contentMode = .scaleAspectFill
+        $0.addTarget(self, action: #selector(didTapLeftIcon), for: .touchUpInside)
     }
     
-    private let rightMoveIcon = UIButton().then {
+    private lazy var rightMoveIcon = UIButton().then {
         $0.setBackgroundImage(.reIconMoveRight, for: .normal)
         $0.contentMode = .scaleAspectFill
+        $0.addTarget(self, action: #selector(didTapRightIcon), for: .touchUpInside)
     }
     
     private let changeWeekToMonthButton = UIButton().then {
@@ -109,5 +122,21 @@ final class WeekBox: BaseUIView {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func didTapLeftIcon() {
+        delegate?.didTapPreMoveButton()
+        monthOffset -= 1
+        monthLabel.text = formatter.getYearMonthText(monthOffset)
+    }
+    
+    @objc
+    private func didTapRightIcon() {
+        delegate?.didTapRightMoveButton()
+        monthOffset += 1
+        monthLabel.text = formatter.getYearMonthText(monthOffset)
     }
 }

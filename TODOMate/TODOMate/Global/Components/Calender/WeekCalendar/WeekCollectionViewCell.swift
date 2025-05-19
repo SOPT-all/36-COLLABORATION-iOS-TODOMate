@@ -78,8 +78,8 @@ final class WeekCollectionViewCell: UICollectionViewCell {
 
 extension WeekCollectionViewCell {
     func dataBind(date: String, isSelected: Bool, index: Int) {
-        let slicedDate = String(date.suffix(2))
-        dayLabel.text = slicedDate
+        let slicedDate = Int(date.suffix(2)) ?? 1
+        dayLabel.text = "\(slicedDate)"
         
         if isSelected {
             dayLabel.backgroundColor = .black

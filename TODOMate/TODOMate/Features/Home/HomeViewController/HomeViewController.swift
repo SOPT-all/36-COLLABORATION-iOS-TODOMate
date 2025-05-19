@@ -12,12 +12,14 @@ final class HomeViewController: BaseUIViewController {
     // MARK: - UI Components
 
     let homeView = HomeView()
+    var keyboardHeight: CGFloat = 0
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMockTodos()
+        setupKeyboardObservers()
     }
 
     // MARK: - Custom Method
@@ -84,6 +86,21 @@ final class HomeViewController: BaseUIViewController {
         }
     }
 
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(keyboardWillHide),
+//            name: UIResponder.keyboardWillHideNotification,
+//            object: nil
+//        )
+    }
+
     // MARK: - Action Methods
 
     @objc
@@ -104,5 +121,22 @@ final class HomeViewController: BaseUIViewController {
     @objc
     private func didTapToolBarButton() {
         homeView.addSubTaskToFocusedList()
+    }
+
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        let info = notification.userInfo
+            if let keyboardSize = info?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+
+            keyboardHeight = keyboardSize.height
+                homeView.toolbar.snp.remakeConstraints {
+                    $0.leading.trailing.equalToSuperview()
+                    $0.bottom.equalToSuperview().inset(keyboardHeight)
+                    $0.height.equalTo(50)
+                }
+                print("ddd")
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }

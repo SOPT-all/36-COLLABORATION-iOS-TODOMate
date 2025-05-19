@@ -58,6 +58,8 @@ final class TodoView: BaseUIView {
         $0.isScrollEnabled = false
         $0.textContainerInset = .zero
         $0.textContainer.lineFragmentPadding = 0
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .no
     }
 
     private let underlineView = UIView().then {

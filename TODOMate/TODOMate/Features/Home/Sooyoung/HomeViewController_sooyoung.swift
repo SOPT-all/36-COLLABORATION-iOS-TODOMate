@@ -31,4 +31,25 @@ final class HomeViewController_sooyoung: BaseUIViewController {
             $0.height.equalTo(50)
         }
     }
+    
+    override func addTarget() {
+        homeView.toolbar.detailButton.addTarget(self, action: #selector(didTapDetailButton), for: .touchUpInside)
+        homeView.toolbar.routineButton.addTarget(self, action: #selector(didTapRoutineButton), for: .touchUpInside)
+        homeView.toolbar.importantButton.addTarget(self, action: #selector(didTapPriorityButton), for: .touchUpInside)
+    }
+    
+    @objc
+    private func didTapDetailButton() {
+        homeView.toolbar.detailButton.isSelected.toggle()
+    }
+    
+    @objc
+    private func didTapRoutineButton() {
+        homeView.toolbar.routineButton.isSelected.toggle()
+    }
+    
+    @objc
+    private func didTapPriorityButton() {
+        homeView.toolbar.importantButton.isSelected.toggle()
+    }
 }

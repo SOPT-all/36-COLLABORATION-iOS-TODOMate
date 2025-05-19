@@ -13,13 +13,18 @@ final class CalendarDateFormatter {
             calendar.firstWeekday = 2
             return calendar
     }()
+    
+    // MARK: - Properties
         
+    private let calendarFormatter = DateFormatter()
     private let monthFormatter = DateFormatter()
     private let dateFormatter = DateFormatter()
     private var nowCalendarDate = Date()
     private var dates = [String]()
+    private var weekDates: [String] = []
     
     init() {
+        calendarFormatter.dateFormat = "yyMMdd"
         monthFormatter.dateFormat = "yyyy년 MM월"
         monthFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "d"
@@ -37,20 +42,24 @@ final class CalendarDateFormatter {
         return monthText
     }
     
-    func getDateStringsOfWeek(_ offset: Int) -> [String] {
+    func getWeekDateStringsOfWeek(_ offset: Int) -> [String] {
         guard let targetDate = calendar.date(byAdding: .weekOfYear, value: offset, to: nowCalendarDate),
               let weekInterval = calendar.dateInterval(of: .weekOfYear, for: targetDate) else {
             return []
         }
 
-        var weekDates: [String] = []
         for i in 0..<7 {
             if let date = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
-                weekDates.append(dateFormatter.string(from: date))
+                weekDates.append(calendarFormatter.string(from: date))
             }
         }
         print("이번주는요 ", weekDates)
         return weekDates
+    }
+    
+    func getDateStringOfWeek(_ offset: Int) -> [String] {
+        let dateStrings = getWeekDateStringsOfWeek(offset)
+        return dateStrings.map { String($0.suffix(2)) }
     }
     
     func getDayOfWeek(from date: String) -> Int {

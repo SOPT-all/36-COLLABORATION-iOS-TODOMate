@@ -40,7 +40,7 @@ final class Routine: BaseUIView {
         $0.textAlignment = .center
     }
     
-    private let leftButton = UIButton().then {
+    let leftButton = UIButton().then {
         $0.setImage(.reIconRoutineBeforeBlack, for: .normal)
     }
     
@@ -110,7 +110,7 @@ final class Routine: BaseUIView {
         optionStackView.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(250)
+            $0.height.equalTo(210)
         }
         
         setupOptions()

@@ -27,18 +27,17 @@ final class CalendarDateFormatter {
     }
     
     func getYearMonthText(_ offset: Int) -> String {
-//        let yearMonthText = self.monthFormatter.string(from: self.nowCalendarDate)
         guard let targetDate = calendar.date(byAdding: .weekOfYear, value: offset, to: nowCalendarDate),
               let weekInterval = calendar.dateInterval(of: .weekOfYear, for: targetDate) else {
             return ""
         }
         
-        var monthText = monthFormatter.string(from: weekInterval.start)
+        let monthText = monthFormatter.string(from: weekInterval.start)
         print("이번 달은요 ", monthText)
         return monthText
     }
     
-    func getDateStringsOfWeek(offset: Int) -> [String] {
+    func getDateStringsOfWeek(_ offset: Int) -> [String] {
         guard let targetDate = calendar.date(byAdding: .weekOfYear, value: offset, to: nowCalendarDate),
               let weekInterval = calendar.dateInterval(of: .weekOfYear, for: targetDate) else {
             return []

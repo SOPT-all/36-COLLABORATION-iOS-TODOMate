@@ -109,7 +109,9 @@ final class WeekCalendar: BaseUIView {
     }
     
     private func setDate(_ offset: Int) {
-        weekDates = formatter.getDateStringsOfWeek(offset: offset)
+        weekDates = formatter.getDateStringsOfWeek(offset)
+        selectedIndex = formatter.getTodayDay()
+        selectedDate = weekDates[selectedIndex]
         weekCollectionView.reloadData()
     }
 }

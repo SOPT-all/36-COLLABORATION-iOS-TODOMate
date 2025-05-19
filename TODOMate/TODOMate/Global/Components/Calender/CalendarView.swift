@@ -21,6 +21,7 @@ final class CalendarView: BaseUIView {
     
     override func setUI() {
         addSubviews(weekBox, weekCalendar)
+        setDelegate()
     }
     
     override func setLayout() {
@@ -35,5 +36,9 @@ final class CalendarView: BaseUIView {
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.height.equalTo(65)
         }
+    }
+    
+    private func setDelegate() {
+        weekBox.delegate = weekCalendar
     }
 }

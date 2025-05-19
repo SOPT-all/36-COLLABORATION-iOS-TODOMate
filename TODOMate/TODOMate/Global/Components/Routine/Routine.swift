@@ -44,7 +44,7 @@ final class Routine: BaseUIView {
         $0.setImage(.reIconRoutineBeforeBlack, for: .normal)
     }
     
-    private let completeButton = UIButton().then {
+    let completeButton = UIButton().then {
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.grey10, for: .normal)
         $0.titleLabel?.font = .cap_reg_12

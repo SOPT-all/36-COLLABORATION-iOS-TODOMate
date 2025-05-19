@@ -44,7 +44,7 @@ final class Priority: BaseUIView {
         $0.textAlignment = .center
     }
     
-    private let completeButton = UIButton().then {
+    let completeButton = UIButton().then {
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.grey10, for: .normal)
         $0.titleLabel?.font = .cap_reg_12

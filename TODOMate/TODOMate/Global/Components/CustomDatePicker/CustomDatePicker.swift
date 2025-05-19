@@ -19,8 +19,14 @@ final class CustomDatePicker: BaseUIView {
         $0.textAlignment = .center
     }
     
-    private let rightButton = UIButton().then {
+    private let startRightButton = UIButton().then {
         $0.setImage(.reIconRoutineNextBlack, for: .normal)
+        $0.isHidden = false
+    }
+    
+    let endRightButton = UIButton().then {
+        $0.setImage(.reIconRoutineNextBlack, for: .normal)
+        $0.isHidden = true
     }
     
     private let leftButton = UIButton().then {
@@ -40,10 +46,14 @@ final class CustomDatePicker: BaseUIView {
     
     override func setUI() {
         backgroundColor = .white
-        [title, leftButton, rightButton, datePicker].forEach {
+        [title, leftButton, startRightButton, endRightButton, datePicker].forEach {
             addSubviews($0)
         }
-        addTarget()
+        startRightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
+        leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
+        
+        datePicker.setDate(startDate, animated: false)
+        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
     }
     
     override func setLayout() {
@@ -54,7 +64,13 @@ final class CustomDatePicker: BaseUIView {
             $0.height.equalTo(30)
         }
         
-        rightButton.snp.makeConstraints {
+        startRightButton.snp.makeConstraints {
+            $0.centerY.equalTo(title.snp.centerY)
+            $0.trailing.equalTo(safeAreaLayoutGuide).inset(24)
+            $0.width.height.equalTo(14)
+        }
+        
+        endRightButton.snp.makeConstraints {
             $0.centerY.equalTo(title.snp.centerY)
             $0.trailing.equalTo(safeAreaLayoutGuide).inset(24)
             $0.width.height.equalTo(14)
@@ -84,6 +100,8 @@ final class CustomDatePicker: BaseUIView {
         isSelectingStartDate = false
         title.text = "종료 날짜"
         leftButton.isHidden = false
+        startRightButton.isHidden = true
+        endRightButton.isHidden = false
         datePicker.setDate(endDate, animated: true)
     }
     
@@ -91,6 +109,8 @@ final class CustomDatePicker: BaseUIView {
         isSelectingStartDate = true
         title.text = "시작 날짜"
         leftButton.isHidden = true
+        startRightButton.isHidden = false
+        endRightButton.isHidden = true
         datePicker.setDate(startDate, animated: true)
     }
     

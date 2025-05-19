@@ -27,6 +27,12 @@ extension UIViewController: UIGestureRecognizerDelegate {
                 if view is UIButton, view.accessibilityIdentifier == "detailButton" {
                     return false
                 }
+                
+                if view.isDescendant(of: self.view.viewWithTag(1001) ?? UIView()) ||
+                    view.isDescendant(of: self.view.viewWithTag(1002) ?? UIView()) ||
+                    view.isDescendant(of: self.view.viewWithTag(1003) ?? UIView()) {
+                    return false
+                }
             }
             return true
         }

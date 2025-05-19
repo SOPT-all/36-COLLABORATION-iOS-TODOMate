@@ -10,7 +10,7 @@ import Foundation
 import Then
 
 final class HomeView_sooyoung: BaseUIView {
-
+    
     // MARK: - UI Components
 
     let datePicker = CustomDatePicker()
@@ -32,6 +32,10 @@ final class HomeView_sooyoung: BaseUIView {
             addSubview($0)
         }
         
+        datePicker.tag = 1001
+        routine.tag = 1002
+        priority.tag = 1003
+        
         datePicker.isHidden = true
         routine.isHidden = true
         priority.isHidden = true
@@ -42,6 +46,7 @@ final class HomeView_sooyoung: BaseUIView {
             $0.top.equalTo(toolbar.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(278)
         }
 
         textField.snp.makeConstraints {
@@ -59,13 +64,14 @@ final class HomeView_sooyoung: BaseUIView {
         routine.snp.makeConstraints {
             $0.top.equalTo(toolbar.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(278)
         }
         
         priority.snp.makeConstraints {
             $0.top.equalTo(toolbar.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.height.equalTo(278)
         }
     }
 }

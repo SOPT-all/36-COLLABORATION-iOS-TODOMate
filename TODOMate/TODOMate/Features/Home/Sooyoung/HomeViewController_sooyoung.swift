@@ -22,6 +22,7 @@ final class HomeViewController_sooyoung: BaseUIViewController {
         view.backgroundColor = .white
         
         homeView.toolbar.detailButton.accessibilityIdentifier = "detailButton"
+        homeView.datePicker.accessibilityIdentifier = "datePicker"
     }
     
     override func viewDidLoad() {
@@ -42,15 +43,22 @@ final class HomeViewController_sooyoung: BaseUIViewController {
         homeView.routine.completeButton.addTarget(self, action: #selector(didTapRoutineCompleteButton), for: .touchUpInside)
         homeView.priority.completeButton.addTarget(self, action: #selector(didTapProrityCompleteButton), for: .touchUpInside)
         homeView.datePicker.endRightButton.addTarget(self, action: #selector(didTapEndRightButton), for: .touchUpInside)
+        homeView.routine.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
     }
     
     @objc
     override func dismissKeyboard() {
         view.endEditing(true)
+        homeView.toolbar.isHidden = true
+        homeView.datePicker.isHidden = true
+        homeView.routine.isHidden = true
+        homeView.priority.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     @objc
     private func didTapDetailButton() {
+        homeView.toolbar.isHidden = false
         homeView.toolbar.detailButton.isSelected = true
         homeView.textField.becomeFirstResponder()
     }
@@ -58,26 +66,22 @@ final class HomeViewController_sooyoung: BaseUIViewController {
     @objc
     private func didTapRoutineButton() {
         homeView.toolbar.routineButton.isSelected = true
-        if(homeView.toolbar.routineButton.isSelected) {
-            homeView.datePicker.isHidden = false
-            homeView.routine.isHidden = true
-            homeView.priority.isHidden = true
-            tabBarController?.tabBar.isHidden = true
-        }
+        homeView.toolbar.isHidden = false
         homeView.datePicker.isHidden = false
+        homeView.routine.isHidden = true
+        homeView.priority.isHidden = true
+        tabBarController?.tabBar.isHidden = true
         self.hideKeyboardWhenTappedAround()
     }
     
     @objc
     private func didTapPriorityButton() {
         homeView.toolbar.importantButton.isSelected = true
-        if(homeView.toolbar.importantButton.isSelected) {
-            homeView.datePicker.isHidden = true
-            homeView.routine.isHidden = true
-            homeView.priority.isHidden = false
-            tabBarController?.tabBar.isHidden = true
-        }
+        homeView.toolbar.isHidden = false
+        homeView.datePicker.isHidden = true
+        homeView.routine.isHidden = true
         homeView.priority.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -85,6 +89,12 @@ final class HomeViewController_sooyoung: BaseUIViewController {
     private func didTapEndRightButton() {
         homeView.datePicker.isHidden = true
         homeView.routine.isHidden = false
+    }
+    
+    @objc
+    private func didTapLeftButton() {
+        homeView.datePicker.isHidden = false
+        homeView.routine.isHidden = true
     }
     
     @objc
@@ -121,6 +131,7 @@ final class HomeViewController_sooyoung: BaseUIViewController {
             homeView.toolbar.snp.updateConstraints {
                 $0.bottom.equalToSuperview().inset(keyboardHeight)
             }
+            homeView.toolbar.isHidden = false
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
@@ -128,9 +139,6 @@ final class HomeViewController_sooyoung: BaseUIViewController {
     }
 
     @objc private func keyboardWillHide(_ notification: Notification) {
-//        homeView.toolbar.snp.updateConstraints {
-//            $0.bottom.equalToSuperview()
-//        }
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

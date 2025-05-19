@@ -22,29 +22,36 @@ final class CalendarDateFormatter {
     init() {
         monthFormatter.dateFormat = "yyyy년 MM월"
         monthFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "dd"
+        dateFormatter.dateFormat = "d"
         dateFormatter.locale = Locale(identifier: "ko_KR")
     }
     
-    func getYearMonthText() -> String {
-        let yearMonthText = self.monthFormatter.string(from: self.nowCalendarDate)
-        return yearMonthText
+    func getYearMonthText(_ offset: Int) -> String {
+//        let yearMonthText = self.monthFormatter.string(from: self.nowCalendarDate)
+        guard let targetDate = calendar.date(byAdding: .weekOfYear, value: offset, to: nowCalendarDate),
+              let weekInterval = calendar.dateInterval(of: .weekOfYear, for: targetDate) else {
+            return ""
+        }
+        
+        var monthText = monthFormatter.string(from: weekInterval.start)
+        print("이번 달은요 ", monthText)
+        return monthText
     }
     
-    func getDatesOfWeek() -> [Date] {
-        guard let weekInterval = calendar.dateInterval(of: .weekOfYear, for: nowCalendarDate) else { return [] }
-        
-        var weekDates: [Date] = []
+    func getDateStringsOfWeek(offset: Int) -> [String] {
+        guard let targetDate = calendar.date(byAdding: .weekOfYear, value: offset, to: nowCalendarDate),
+              let weekInterval = calendar.dateInterval(of: .weekOfYear, for: targetDate) else {
+            return []
+        }
+
+        var weekDates: [String] = []
         for i in 0..<7 {
             if let date = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
-                weekDates.append(date)
+                weekDates.append(dateFormatter.string(from: date))
             }
         }
+        print("이번주는요 ", weekDates)
         return weekDates
-    }
-    
-    func getDateStringsOfThisWeek() -> [String] {
-        return getDatesOfWeek().map { dateFormatter.string(from: $0) }
     }
     
     func getDayOfWeek(from date: String) -> Int {
@@ -61,4 +68,5 @@ final class CalendarDateFormatter {
         let dayIndex = calendar.component(.weekday, from: nowCalendarDate)
         return (dayIndex + 5) % 7
     }
+
 }

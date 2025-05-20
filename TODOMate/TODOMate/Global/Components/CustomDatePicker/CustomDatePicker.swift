@@ -89,7 +89,7 @@ final class CustomDatePicker: BaseUIView {
     }
     
     private func addTarget() {
-        rightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
+        startRightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
         leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
         
         datePicker.setDate(startDate, animated: false)

@@ -12,8 +12,10 @@ final class HomeView: BaseUIView {
     // MARK: - UI Components
 
     let navigationBar = CustomNavigationBar()
-
-    let toolbar = ToolBar()
+    
+    let friendsListView = FriendsListView()
+    let profileView = ProfileView()
+    let calenderView = CalendarView()
 
     private let scrollView = UIScrollView()
     let contentView = UIView()
@@ -41,6 +43,11 @@ final class HomeView: BaseUIView {
     }
 
     let todoListView3 = TodoListView()
+    
+    let datePicker = CustomDatePicker()
+    let toolbar = ToolBar()
+    let routine = Routine()
+    let priority = Priority()
 
     let aiButton = CapsuleButton().then {
         $0.type = .ai
@@ -50,15 +57,24 @@ final class HomeView: BaseUIView {
     // MARK: - Custom Methods
 
     override func setUI() {
-        addSubviews(navigationBar, scrollView, toolbar)
+        addSubviews(navigationBar, scrollView, friendsListView, datePicker, toolbar, routine, priority)
         scrollView.addSubview(contentView)
 
         contentView.addSubviews(
+            profileView, calenderView,
             categoryButton1, todoListView1,
             categoryButton2, todoListView2,
             categoryButton3, todoListView3,
             aiButton
         )
+        
+        datePicker.tag = 1001
+        routine.tag = 1002
+        priority.tag = 1003
+        
+        datePicker.isHidden = true
+        routine.isHidden = true
+        priority.isHidden = true
     }
 
     override func setLayout() {
@@ -67,9 +83,15 @@ final class HomeView: BaseUIView {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(48)
         }
-
-        scrollView.snp.makeConstraints {
+        
+        friendsListView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(93)
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(friendsListView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
 
@@ -77,15 +99,21 @@ final class HomeView: BaseUIView {
             $0.edges.equalToSuperview()
             $0.width.equalTo(scrollView)
         }
-
-        toolbar.snp.remakeConstraints {
+        
+        profileView.snp.makeConstraints {
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
             $0.height.equalTo(50)
+        }
+        
+        calenderView.snp.makeConstraints {
+            $0.top.equalTo(profileView.snp.bottom).offset(28)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(104)
         }
 
         categoryButton1.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(200)
+            $0.top.equalTo(calenderView.snp.bottom).offset(33)
             $0.leading.equalToSuperview().inset(20)
         }
 
@@ -118,6 +146,32 @@ final class HomeView: BaseUIView {
             $0.top.equalTo(todoListView3.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(80)
+        }
+        
+        datePicker.snp.makeConstraints {
+            $0.top.equalTo(toolbar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(278)
+        }
+        
+        toolbar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        routine.snp.makeConstraints {
+            $0.top.equalTo(toolbar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(278)
+        }
+        
+        priority.snp.makeConstraints {
+            $0.top.equalTo(toolbar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(278)
         }
     }
 }

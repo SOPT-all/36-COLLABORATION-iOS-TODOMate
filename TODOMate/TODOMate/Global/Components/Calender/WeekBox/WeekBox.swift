@@ -42,13 +42,11 @@ final class WeekBox: BaseUIView {
     private lazy var leftMoveIcon = UIButton().then {
         $0.setBackgroundImage(.reIconMoveLeft, for: .normal)
         $0.contentMode = .scaleAspectFill
-        $0.addTarget(self, action: #selector(didTapLeftIcon), for: .touchUpInside)
     }
     
     private lazy var rightMoveIcon = UIButton().then {
         $0.setBackgroundImage(.reIconMoveRight, for: .normal)
         $0.contentMode = .scaleAspectFill
-        $0.addTarget(self, action: #selector(didTapRightIcon), for: .touchUpInside)
     }
     
     private let changeWeekToMonthButton = UIButton().then {
@@ -63,6 +61,7 @@ final class WeekBox: BaseUIView {
     
     override func setUI() {
         addSubviews(monthLabel, checkBoxIcon, checkLabel, smileIcon, smileCount, heartIcon, heartCount, leftMoveIcon, rightMoveIcon, changeWeekToMonthButton)
+        addTarget()
     }
     
     override func setLayout() {
@@ -122,6 +121,11 @@ final class WeekBox: BaseUIView {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
+    }
+    
+    private func addTarget() {
+        leftMoveIcon.addTarget(self, action: #selector(didTapLeftIcon), for: .touchUpInside)
+        rightMoveIcon.addTarget(self, action: #selector(didTapRightIcon), for: .touchUpInside)
     }
     
     // MARK: - Actions

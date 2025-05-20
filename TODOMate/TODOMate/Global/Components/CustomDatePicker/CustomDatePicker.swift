@@ -43,11 +43,7 @@ final class CustomDatePicker: BaseUIView {
         [title, leftButton, rightButton, datePicker].forEach {
             addSubviews($0)
         }
-        rightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
-        leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
-        
-        datePicker.setDate(startDate, animated: false)
-        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        addTarget()
     }
     
     override func setLayout() {
@@ -75,6 +71,15 @@ final class CustomDatePicker: BaseUIView {
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
     }
+    
+    private func addTarget() {
+        rightButton.addTarget(self, action: #selector(didTapRightButton), for: .touchUpInside)
+        leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
+        
+        datePicker.setDate(startDate, animated: false)
+        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+    }
+    
     @objc private func didTapRightButton() {
         isSelectingStartDate = false
         title.text = "종료 날짜"

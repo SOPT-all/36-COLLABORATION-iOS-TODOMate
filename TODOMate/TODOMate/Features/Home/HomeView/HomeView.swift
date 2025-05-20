@@ -49,11 +49,29 @@ final class HomeView: BaseUIView {
     let routine = Routine()
     let priority = Priority()
 
+    let line = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.image = .reLine
+    }
+    
     let aiButton = CapsuleButton().then {
         $0.type = .ai
         $0.text = "AI 할일생성"
     }
 
+    let listMenuView = UIView()
+    
+    let listMenuIcon = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.image = .reIconList
+    }
+     
+    let listMenuText = UILabel().then {
+        $0.font = .cap_med_12
+        $0.text = "리스트 메뉴"
+        $0.textColor = .black
+    }
+    
     // MARK: - Custom Methods
 
     override func setUI() {
@@ -65,8 +83,10 @@ final class HomeView: BaseUIView {
             categoryButton1, todoListView1,
             categoryButton2, todoListView2,
             categoryButton3, todoListView3,
-            aiButton
+            line, aiButton, listMenuView
         )
+        
+        listMenuView.addSubviews(listMenuIcon, listMenuText)
         
         datePicker.tag = 1001
         routine.tag = 1002
@@ -141,11 +161,35 @@ final class HomeView: BaseUIView {
             $0.top.equalTo(categoryButton3.snp.bottom).offset(13)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
+        
+        line.snp.makeConstraints {
+            $0.top.equalTo(todoListView3.snp.bottom).offset(22)
+            $0.leading.trailing.equalToSuperview().inset(24)
+        }
 
         aiButton.snp.makeConstraints {
-            $0.top.equalTo(todoListView3.snp.bottom).offset(20)
+            $0.top.equalTo(line.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(80)
+        }
+        
+        listMenuView.snp.makeConstraints {
+            $0.top.equalTo(line.snp.bottom).offset(20)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(80)
+        }
+        
+        listMenuIcon.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.width.equalTo(10)
+            $0.height.equalTo(9)
+        }
+        
+        listMenuText.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(listMenuIcon.snp.trailing).offset(8)
+            $0.trailing.equalToSuperview()
         }
         
         datePicker.snp.makeConstraints {

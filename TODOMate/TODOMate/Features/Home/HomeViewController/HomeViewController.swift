@@ -26,6 +26,9 @@ final class HomeViewController: BaseUIViewController {
 
     override func setUI() {
         view.addSubview(homeView)
+        
+        homeView.toolbar.detailButton.accessibilityIdentifier = "detailButton"
+        homeView.datePicker.accessibilityIdentifier = "datePicker"
     }
 
     override func setLayout() {
@@ -39,7 +42,13 @@ final class HomeViewController: BaseUIViewController {
         homeView.categoryButton1.addTarget(self, action: #selector(didTapCategory1Button), for: .touchUpInside)
         homeView.categoryButton2.addTarget(self, action: #selector(didTapCategory2Button), for: .touchUpInside)
         homeView.categoryButton3.addTarget(self, action: #selector(didTapCategory3Button), for: .touchUpInside)
-        homeView.aiButton.addTarget(self, action: #selector(didTapToolBarButton), for: .touchUpInside)
+        homeView.toolbar.detailButton.addTarget(self, action: #selector(didTapDetailButton), for: .touchUpInside)
+        homeView.toolbar.routineButton.addTarget(self, action: #selector(didTapRoutineButton), for: .touchUpInside)
+        homeView.toolbar.importantButton.addTarget(self, action: #selector(didTapPriorityButton), for: .touchUpInside)
+        homeView.routine.completeButton.addTarget(self, action: #selector(didTapRoutineCompleteButton), for: .touchUpInside)
+        homeView.priority.completeButton.addTarget(self, action: #selector(didTapProrityCompleteButton), for: .touchUpInside)
+        homeView.datePicker.endRightButton.addTarget(self, action: #selector(didTapEndRightButton), for: .touchUpInside)
+        homeView.routine.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
     }
 
     // MARK: - Private Methods
@@ -100,6 +109,11 @@ final class HomeViewController: BaseUIViewController {
 //            object: nil
 //        )
     }
+    
+    // api 호출 시 선택된 날짜를 가져오는 함수입니다
+    private func getSelectedDate() -> String {
+        return homeView.calenderView.weekCalendar.selectedDate
+    }
 
     // MARK: - Action Methods
 
@@ -119,24 +133,84 @@ final class HomeViewController: BaseUIViewController {
     }
 
     @objc
-    private func didTapToolBarButton() {
-        homeView.addSubTaskToFocusedList()
-    }
-
-    @objc private func keyboardWillShow(_ notification: Notification) {
+    private func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo
             if let keyboardSize = info?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-
             keyboardHeight = keyboardSize.height
-                homeView.toolbar.snp.remakeConstraints {
-                    $0.leading.trailing.equalToSuperview()
-                    $0.bottom.equalToSuperview().inset(keyboardHeight)
-                    $0.height.equalTo(50)
-                }
-                print("ddd")
+            homeView.toolbar.snp.updateConstraints {
+                $0.bottom.equalToSuperview().inset(keyboardHeight)
+            }
+            homeView.toolbar.isHidden = false
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
+        }
+    }
+    
+    @objc
+    override func dismissKeyboard() {
+        view.endEditing(true)
+        homeView.toolbar.isHidden = true
+        homeView.datePicker.isHidden = true
+        homeView.routine.isHidden = true
+        homeView.priority.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    @objc
+    private func didTapDetailButton() {
+        homeView.toolbar.isHidden = false
+        homeView.toolbar.detailButton.isSelected = true
+        homeView.addSubTaskToFocusedList()
+    }
+    
+    @objc
+    private func didTapRoutineButton() {
+        homeView.toolbar.routineButton.isSelected = true
+        homeView.toolbar.isHidden = false
+        homeView.datePicker.isHidden = false
+        homeView.routine.isHidden = true
+        homeView.priority.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    @objc
+    private func didTapPriorityButton() {
+        homeView.toolbar.importantButton.isSelected = true
+        homeView.toolbar.isHidden = false
+        homeView.datePicker.isHidden = true
+        homeView.routine.isHidden = true
+        homeView.priority.isHidden = false
+        tabBarController?.tabBar.isHidden = true
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    @objc
+    private func didTapEndRightButton() {
+        homeView.datePicker.isHidden = true
+        homeView.routine.isHidden = false
+    }
+    
+    @objc
+    private func didTapLeftButton() {
+        homeView.datePicker.isHidden = false
+        homeView.routine.isHidden = true
+    }
+    
+    @objc
+    private func didTapRoutineCompleteButton() {
+        homeView.routine.isHidden = true
+    }
+    
+    @objc
+    private func didTapProrityCompleteButton() {
+        homeView.priority.isHidden = true
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
 }

@@ -51,6 +51,9 @@ final class HomeViewController: BaseUIViewController {
         homeView.routine.leftButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
     }
 
+    override func setDelegate() {
+        homeView.calenderView.weekCalendar.delegate = self
+    }
     // MARK: - Private Methods
 
     private func setCallBacks() {
@@ -208,9 +211,17 @@ final class HomeViewController: BaseUIViewController {
         homeView.priority.isHidden = true
     }
 
-    @objc private func keyboardWillHide(_ notification: Notification) {
+    @objc
+    private func keyboardWillHide(_ notification: Notification) {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+extension HomeViewController: isSelectCalendarCellDelegate {
+    func didTapCell() {
+        print("셀이 클릭되었어요")
+        print(getSelectedDate())
     }
 }

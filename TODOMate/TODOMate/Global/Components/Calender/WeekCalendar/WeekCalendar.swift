@@ -10,9 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
+protocol isSelectCalendarCellDelegate: AnyObject {
+    func didTapCell()
+}
+
 final class WeekCalendar: BaseUIView {
     
     // MARK: - Properties
+    
+    weak var delegate: isSelectCalendarCellDelegate?
     
     private let formatter = CalendarDateFormatter()
     private var weekDates: [String] = []
@@ -135,6 +141,7 @@ extension WeekCalendar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
         selectedDate = weekDates[selectedIndex]
+        delegate?.didTapCell()
         print("선택된 날짜는요", selectedDate)
         weekCollectionView.reloadData()
     }

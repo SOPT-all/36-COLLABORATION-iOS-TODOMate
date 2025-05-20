@@ -99,6 +99,7 @@ final class Priority: BaseUIView {
     }
     
     override func setUI() {
+        backgroundColor = .white
         [title, completeButton, optionStackView].forEach {
             addSubviews($0)
         }

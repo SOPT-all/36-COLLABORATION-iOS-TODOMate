@@ -85,6 +85,7 @@ final class Routine: BaseUIView {
     }
     
     override func setUI() {
+        backgroundColor = .white
         [title, leftButton, completeButton, optionStackView].forEach {
             addSubviews($0)
         }
@@ -127,10 +128,8 @@ final class Routine: BaseUIView {
         }
         completeButton.setTitleColor(.black, for: .normal)
     }
-
     
     private func optionIndex(_ option: RepeatOption) -> Int {
         return RepeatOption.allCases.firstIndex(of: option) ?? 0
     }
 }
-

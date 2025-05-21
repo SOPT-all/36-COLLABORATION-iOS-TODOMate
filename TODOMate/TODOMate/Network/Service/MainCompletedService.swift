@@ -8,10 +8,10 @@
 final class MainCompletedService {
     let shared = BaseService.shared
     
-    func patchMainTask(id: Int, request: MainCompletedRequest) async throws -> VoidType {
+    func patchMainCompleted(request: MainCompletedRequest, taskId: Int) async throws -> [MainCompletedRequest] {
         do {
-            let response: VoidType = try await shared.request(
-                endPoint: .patchMainTasks(id),
+            let response: [MainCompletedRequest] = try await shared.request(
+                endPoint: .patchMainTasks(taskId),
                 body: request
             )
             return response

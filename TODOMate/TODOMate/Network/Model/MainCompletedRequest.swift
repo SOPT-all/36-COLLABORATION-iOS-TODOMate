@@ -4,8 +4,7 @@
 //
 //  Created by LEESOOYONG on 5/22/25.
 //
-import Foundation
 
-struct MainCompletedRequest: Encodable {
+struct MainCompletedRequest: Codable {
     let completed: Bool
 }

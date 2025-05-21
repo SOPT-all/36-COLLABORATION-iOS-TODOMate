@@ -90,6 +90,15 @@ final class HomeViewController: BaseUIViewController {
                         print("패치 에러: \(error)")
                     }
                 }
+                Task {
+                    do {
+//                        let result = try await patchMainService.patchMainCompleted(
+//                            request: MainCompletedRequest(completed: isSelected), taskId: id)
+                        print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
+//                    } catch {
+//                        print("에러 발생: \(error.localizedDescription)")
+                    }
+                }
             }
         }
     }

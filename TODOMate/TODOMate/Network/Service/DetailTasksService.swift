@@ -6,13 +6,13 @@
 //
 
 final class DetailTasksService {
-    let network = BaseService.shared
+    let shared = BaseService.shared
     
-    func getDetailTasks(date: String) async throws -> DetailTasksResponse {
+    func getDetailTasks(date: String) async throws -> [DetailTasksResponse] {
         do {
-            let response: DetailTasksResponse = try await network.request(
+            let response: [DetailTasksResponse] = try await shared.request(
                 endPoint: .detailMainTasks(date)
-                )
+            )
             return response
         } catch {
             throw error

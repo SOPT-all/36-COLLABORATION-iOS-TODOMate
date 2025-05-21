@@ -9,7 +9,8 @@ import Foundation
 
 final class BaseService {
     static let shared = BaseService()
-    private init() {}
+    
+    private init() { }
     
     func request <Response: Decodable>(
         endPoint: EndPoint,
@@ -72,13 +73,13 @@ final class BaseService {
                 throw NetworkError.noData
             }
             
-            guard let code = Int(decoded.code), (200...299).contains(code) else {
-               throw NetworkError.serverErrorMessage(decoded.message)
+            let successCodes = ["s2000", "s2010", "s2040"]
+            guard successCodes.contains(decoded.code) else {
+                throw NetworkError.serverErrorMessage(decoded.message)
             }
 
            return data
-        }
-        catch {
+        } catch {
             throw NetworkError.responseDecodingError
         }
     }

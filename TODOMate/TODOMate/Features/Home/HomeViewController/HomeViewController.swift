@@ -17,7 +17,7 @@ final class HomeViewController: BaseUIViewController {
     // MARK: - Singletone
     
     private let detailTasksService: DetailTasksService = DetailTasksService()
-
+    private let subTaskPatchService: SubTaskPatchService = SubTaskPatchService()
     private let addTaskService: AddTaskService = AddTaskService()
 
     // MARK: - Life Cycle
@@ -72,6 +72,17 @@ final class HomeViewController: BaseUIViewController {
         homeView.todoListViews.enumerated().forEach { index, listView in
             listView.onToggle = { id, isSelected in
                 print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
+                
+                let request = SubTaskPatchRequest(completed: isSelected)
+                
+                Task {
+                    do {
+                        let result = try await subTaskPatchService.patchSubTask(id: id, request: [request])
+                        print("서브태스크 상태 패치 완료", result)
+                    } catch {
+                        print("패치 에러: \(error)")
+                    }
+                }
             }
         }
     }

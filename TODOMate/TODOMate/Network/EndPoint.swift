@@ -11,7 +11,7 @@ enum EndPoint {
     case detailMainTasks(String)
     case postMainTasks
     case postSubTasks(Int)
-    case patchMainTasks
+    case patchMainTasks(Int)
     case patchSubTasks(Int)
     
     var httpMethod: HTTPMethodType {

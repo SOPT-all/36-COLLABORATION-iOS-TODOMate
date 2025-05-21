@@ -22,6 +22,9 @@ final class TodoView: BaseUIView {
 
     public var id: Int  = Int()
 
+    let uuid: UUID = UUID()
+    var hasCommitted: Bool = false
+
     public var onToggle: ((Int, Bool) -> Void)?
     public var onFocus: (() -> Void)?
     public var unFocus: (() -> Void)?

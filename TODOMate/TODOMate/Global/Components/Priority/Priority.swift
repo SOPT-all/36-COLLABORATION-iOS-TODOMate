@@ -137,7 +137,6 @@ final class Priority: BaseUIView {
         completeButton.setTitleColor(.black, for: .normal)
     }
 
-    
     private func optionIndex(_ option: PriorityOption) -> Int {
         return PriorityOption.allCases.firstIndex(of: option) ?? 0
     }

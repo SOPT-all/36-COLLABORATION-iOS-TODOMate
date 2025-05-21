@@ -86,8 +86,7 @@ final class NetworkLogger {
         output += "\nStatus Code: \(status)"
 
         if let data = data,
-            let str = String(data: data, encoding: .utf8)
-        {
+            let str = String(data: data, encoding: .utf8){
             output += "\n\nBody:\n\(str)"
         }
 

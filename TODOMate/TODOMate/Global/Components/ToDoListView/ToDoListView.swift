@@ -114,7 +114,6 @@ final class TodoListView: BaseUIView {
         }
     }
 
-
     private func configureToggleHandler(for view: TodoView) {
         view.onToggle = { [weak self] id, isSelected in
             guard let self else { return }

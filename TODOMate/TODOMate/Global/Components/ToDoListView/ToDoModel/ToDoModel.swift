@@ -24,4 +24,3 @@ struct SubTask: Decodable {
     let text: String
     let isDone: Bool
 }
-

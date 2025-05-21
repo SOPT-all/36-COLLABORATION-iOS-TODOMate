@@ -24,7 +24,6 @@ final class HomeViewController: BaseUIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureMockTodos()
         setupKeyboardObservers()
         getDetailTodoList()
     }
@@ -85,23 +84,14 @@ final class HomeViewController: BaseUIViewController {
                     print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type)")
                     self.addMainTask(text: text, categoryIndex: index + 1)
                 } else {
-                    print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type), 서브구나 너 메인 아이디는 뭐냐고요: \(String(describing: parentID))")
+                    guard let parentID = parentID else {
+                        print("parentID가 nill입니다")
+                        return
+                    }
+                    print("[카테고리\(index + 1)] 서브투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type), 서브구나 너 메인 아이디는 뭐냐고요: \(String(describing: parentID))")
+                    self.addSubTask(text: text, mainTaskId: parentID)
                 }
             }
-        }
-    }
-
-    ///목데이터 테스트입니다
-    private func configureMockTodos() {
-        let mock = ToDoModel.mockData()
-        if let category1 = mock.first(where: { $0.categoryID == 1 }) {
-            homeView.todoListView1.configure(with: category1.mainTasks)
-        }
-        if let category2 = mock.first(where: { $0.categoryID == 2 }) {
-            homeView.todoListView2.configure(with: category2.mainTasks)
-        }
-        if let category3 = mock.first(where: { $0.categoryID == 3 }) {
-            homeView.todoListView3.configure(with: category3.mainTasks)
         }
     }
 
@@ -231,10 +221,30 @@ final class HomeViewController: BaseUIViewController {
         Task {
             do {
                 let date = getSelectedDate()
-                let result = try await detailTasksService.getDetailTasks(date: date)
-                print("투두 조회 호출", result)
+                let responses = try await detailTasksService.getDetailTasks(date: date)
+                print("투두 조회 결과: \(responses)")
+
+                if responses.isEmpty {
+                    homeView.todoListView1.configure(with: [])
+                    homeView.todoListView2.configure(with: [])
+                    homeView.todoListView3.configure(with: [])
+                    return
+                }
+
+                let todoModels = ToDoModelMapper.map(from: responses)
+
+                if let category1 = todoModels.first(where: { $0.categoryID == 1 }) {
+                    homeView.todoListView1.configure(with: category1.mainTasks)
+                }
+                if let category2 = todoModels.first(where: { $0.categoryID == 2 }) {
+                    homeView.todoListView2.configure(with: category2.mainTasks)
+                }
+                if let category3 = todoModels.first(where: { $0.categoryID == 3 }) {
+                    homeView.todoListView3.configure(with: category3.mainTasks)
+                }
+
             } catch {
-                print("에러 발생: \(error.localizedDescription)")
+                print("투두 불러오기 실패: \(error.localizedDescription)")
             }
         }
     }
@@ -258,11 +268,26 @@ final class HomeViewController: BaseUIViewController {
         }
     }
 
+    private func addSubTask(text: String, mainTaskId: Int) {
+        let request = AddSubTaskRequest(content: text)
+
+        Task {
+            do {
+                let response = try await addTaskService.addSubTask(mainTaskId: mainTaskId, request: request)
+                print("서브 태스크 생성 성공: \(response)")
+                getDetailTodoList()
+            } catch {
+                print("서브 태스크 생성 실패: \(error.localizedDescription)")
+            }
+        }
+    }
+
 }
 
 extension HomeViewController: isSelectCalendarCellDelegate {
     func didTapCell() {
         print("셀이 클릭되었어요")
         print(getSelectedDate())
+        getDetailTodoList()
     }
 }

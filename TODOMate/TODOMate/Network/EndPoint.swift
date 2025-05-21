@@ -10,7 +10,7 @@ import Foundation
 enum EndPoint {
     case detailMainTasks(String)
     case postMainTasks
-    case postSubTasks
+    case postSubTasks(Int)
     case patchMainTasks
     case patchSubTasks
     
@@ -41,6 +41,11 @@ enum EndPoint {
     }
     
     var headers: [String: String] {
-        defaultHeaders
+        switch self {
+        case .postSubTasks(let taskId):
+            return defaultHeaders.merging(["taskId": "\(taskId)"]) { _, new in new }
+        default:
+            return defaultHeaders
+        }
     }
 }

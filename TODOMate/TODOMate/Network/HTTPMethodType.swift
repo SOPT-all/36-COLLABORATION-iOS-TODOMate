@@ -24,4 +24,4 @@ enum HTTPMethodType {
     }
 }
 
-let defaultHeaders = ["Content-Type": "application/json", "userId": "4"]
+let defaultHeaders = ["Content-Type": "application/json", "userId": "1"]

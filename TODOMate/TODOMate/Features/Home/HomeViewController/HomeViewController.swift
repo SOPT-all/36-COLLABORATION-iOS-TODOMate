@@ -19,7 +19,8 @@ final class HomeViewController: BaseUIViewController {
     private let detailTasksService: DetailTasksService = DetailTasksService()
     private let subTaskPatchService: SubTaskPatchService = SubTaskPatchService()
     private let addTaskService: AddTaskService = AddTaskService()
-
+    private let patchMainService: MainCompletedService = MainCompletedService()
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -81,6 +82,15 @@ final class HomeViewController: BaseUIViewController {
                         print("서브태스크 상태 패치 완료", result)
                     } catch {
                         print("패치 에러: \(error)")
+                    }
+                }
+                Task {
+                    do {
+//                        let result = try await patchMainService.patchMainCompleted(
+//                            request: MainCompletedRequest(completed: isSelected), taskId: id)
+                        print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
+//                    } catch {
+//                        print("에러 발생: \(error.localizedDescription)")
                     }
                 }
             }

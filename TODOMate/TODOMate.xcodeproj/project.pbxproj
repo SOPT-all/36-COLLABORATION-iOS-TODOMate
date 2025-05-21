@@ -33,6 +33,9 @@
 		D50E467E2DD646E600C6FB50 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E467D2DD646E500C6FB50 /* Routine.swift */; };
 		D54548EA2DD6E3A600DBBE53 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54548E82DD6E3A600DBBE53 /* CustomDatePicker.swift */; };
 		D54548ED2DD6E3D200DBBE53 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54548EC2DD6E3CC00DBBE53 /* Priority.swift */; };
+		D56E4CCB2DDE2AE100CC6D99 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D56E4CCA2DDE2AE100CC6D99 /* Config.xcconfig */; };
+		D56E4CCD2DDE2C5400CC6D99 /* MainCompletedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E4CCC2DDE2C4000CC6D99 /* MainCompletedService.swift */; };
+		D56E4CD32DDE305200CC6D99 /* MainCompletedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E4CD22DDE302D00CC6D99 /* MainCompletedRequest.swift */; };
 		D5F3FF842DD51C1700493195 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3FF832DD51C1400493195 /* ToolBar.swift */; };
 		E5191F252DCC9790006F43B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */; };
 		E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5191F222DCC9790006F43B6 /* SceneDelegate.swift */; };
@@ -92,6 +95,9 @@
 		D50E467D2DD646E500C6FB50 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		D54548E82DD6E3A600DBBE53 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		D54548EC2DD6E3CC00DBBE53 /* Priority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		D56E4CCA2DDE2AE100CC6D99 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		D56E4CCC2DDE2C4000CC6D99 /* MainCompletedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCompletedService.swift; sourceTree = "<group>"; };
+		D56E4CD22DDE302D00CC6D99 /* MainCompletedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCompletedRequest.swift; sourceTree = "<group>"; };
 		D5F3FF832DD51C1400493195 /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		E5191F032DCC975B006F43B6 /* TODOMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODOMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5191F1B2DCC9790006F43B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 		5155B6232DDE035E001E59FE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D56E4CD22DDE302D00CC6D99 /* MainCompletedRequest.swift */,
 				5155B65F2DDE4140001E59FE /* SubTaskPatchRequest.swift */,
 				5155B6252DDE040D001E59FE /* DetailTasksResponse.swift */,
 				E5524F032DDE2AC900C396F4 /* AddMainTaskDTO.swift */,
@@ -190,6 +197,7 @@
 		5155B6242DDE0360001E59FE /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D56E4CCC2DDE2C4000CC6D99 /* MainCompletedService.swift */,
 				5155B6612DDE41C6001E59FE /* SubTaskPatchService.swift */,
 				5155B6272DDE06CF001E59FE /* DetailTasksService.swift */,
 				E5524F012DDE29B100C396F4 /* AddTaskService.swift */,
@@ -620,6 +628,7 @@
 				51580CAB2DD5180100B56E7B /* FriendsListCollectionViewCell.swift in Sources */,
 				51580CAC2DD5180100B56E7B /* FriendsListView.swift in Sources */,
 				51580CAD2DD5180100B56E7B /* ProfileView.swift in Sources */,
+				D56E4CD32DDE305200CC6D99 /* MainCompletedRequest.swift in Sources */,
 				513A22B72DD5215F00F28836 /* CalendarDayLabel.swift in Sources */,
 				D54548EA2DD6E3A600DBBE53 /* CustomDatePicker.swift in Sources */,
 				E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */,
@@ -628,6 +637,7 @@
 				E52CDF072DD3AAD600E22E00 /* HomeViewController_sooyoung.swift in Sources */,
 				5155B5A02DDDF8DF001E59FE /* EndPoint.swift in Sources */,
 				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,
+				D56E4CCD2DDE2C5400CC6D99 /* MainCompletedService.swift in Sources */,
 				E52CDF092DD3AAD800E22E00 /* HomeView_sooyoung.swift in Sources */,
 				E52CDF3E2DD4D76A00E22E00 /* UIViewController+.swift in Sources */,
 				5155B6602DDE4151001E59FE /* SubTaskPatchRequest.swift in Sources */,

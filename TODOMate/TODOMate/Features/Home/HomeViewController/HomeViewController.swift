@@ -14,12 +14,17 @@ final class HomeViewController: BaseUIViewController {
     let homeView = HomeView()
     var keyboardHeight: CGFloat = 0
 
+    // MARK: - Singletone
+    
+    private let detailTasksService: DetailTasksService = DetailTasksService()
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMockTodos()
         setupKeyboardObservers()
+        getDetailTodoList()
     }
 
     // MARK: - Custom Method
@@ -215,6 +220,20 @@ final class HomeViewController: BaseUIViewController {
     private func keyboardWillHide(_ notification: Notification) {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    // MARK: - Network
+    
+    func getDetailTodoList() {
+        Task {
+            do {
+                let date = getSelectedDate()
+                let result = try await detailTasksService.getDetailTasks(date: date)
+                print("투두 조회 호출", result)
+            } catch {
+                print("에러 발생: \(error.localizedDescription)")
+            }
         }
     }
 }

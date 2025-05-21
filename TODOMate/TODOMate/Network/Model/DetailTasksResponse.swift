@@ -5,21 +5,18 @@
 //  Created by 이나연 on 5/21/25.
 //
 
-struct DetailTasksResponse: Decodable {
+struct DetailTasksResponse: Codable {
     let mainTaskId: Int
     let taskContent: String
-    let startAt: String
-    let endAt: String
-    let routineType: String
-    let priority: Int
+    let importance: String
     let category: String
-    let taskDate: String
     let completed: Bool
-    let subTasks: [SubTasks]
+    let subTasks: [SubTasks]?
 }
 
-struct SubTasks: Decodable {
+struct SubTasks: Codable {
     let subTaskId: Int
+    let mainTaskId: Int
     let content: String
     let completed: Bool
 }

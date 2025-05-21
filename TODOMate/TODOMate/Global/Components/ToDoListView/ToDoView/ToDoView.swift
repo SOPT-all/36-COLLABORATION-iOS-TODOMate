@@ -20,10 +20,9 @@ final class TodoView: BaseUIView {
 
     // MARK: - Properties
 
-    ///추후 int값으로 들어오는 id로 바꿀 예정입니다.
-    public var id: UUID = UUID()
+    public var id: Int  = Int()
 
-    public var onToggle: ((UUID, Bool) -> Void)?
+    public var onToggle: ((Int, Bool) -> Void)?
     public var onFocus: (() -> Void)?
     public var unFocus: (() -> Void)?
 
@@ -44,7 +43,7 @@ final class TodoView: BaseUIView {
 
     public let taskType: TaskType
 
-    public var parentMainTaskID: UUID?
+    public var parentMainTaskID: Int?
 
     // MARK: - UI Components
 

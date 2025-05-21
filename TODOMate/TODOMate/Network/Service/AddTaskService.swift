@@ -21,4 +21,11 @@ final class AddTaskService {
             throw error
         }
     }
+
+    func addSubTask(mainTaskId: Int, request: AddSubTaskRequest) async throws -> AddSubTaskResponse {
+        return try await shared.request(
+            endPoint: .postSubTasks(mainTaskId),
+            body: request
+        )
+    }
 }

@@ -52,6 +52,8 @@
 		E5524F022DDE29B100C396F4 /* AddTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5524F012DDE29B100C396F4 /* AddTaskService.swift */; };
 		E5524F042DDE2AC900C396F4 /* AddMainTaskDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5524F032DDE2AC900C396F4 /* AddMainTaskDTO.swift */; };
 		E5524F062DDE2DA500C396F4 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E5524F052DDE2DA500C396F4 /* Config.xcconfig */; };
+		E5524F082DDE372800C396F4 /* AddSubTaskDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5524F072DDE372800C396F4 /* AddSubTaskDTO.swift */; };
+		E5524F1D2DDE418900C396F4 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5524F1C2DDE418900C396F4 /* HomeModel.swift */; };
 		E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E554C98C2DD125CD002CF37B /* TabBarViewController.swift */; };
 		E567AB6A2DD20CEA00FA92E2 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */; };
 		E567AB6D2DD20D0100FA92E2 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E567AB6C2DD20D0100FA92E2 /* Then */; };
@@ -109,6 +111,8 @@
 		E5524F012DDE29B100C396F4 /* AddTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskService.swift; sourceTree = "<group>"; };
 		E5524F032DDE2AC900C396F4 /* AddMainTaskDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMainTaskDTO.swift; sourceTree = "<group>"; };
 		E5524F052DDE2DA500C396F4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E5524F072DDE372800C396F4 /* AddSubTaskDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubTaskDTO.swift; sourceTree = "<group>"; };
+		E5524F1C2DDE418900C396F4 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		E554C98C2DD125CD002CF37B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E567AB692DD20CEA00FA92E2 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		E567AB742DD2119000FA92E2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			children = (
 				5155B6252DDE040D001E59FE /* DetailTasksResponse.swift */,
 				E5524F032DDE2AC900C396F4 /* AddMainTaskDTO.swift */,
+				E5524F072DDE372800C396F4 /* AddSubTaskDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,6 +385,14 @@
 			path = ToDoView;
 			sourceTree = "<group>";
 		};
+		E5524F1B2DDE416900C396F4 /* HomeModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5524F1C2DDE418900C396F4 /* HomeModel.swift */,
+			);
+			path = HomeModel;
+			sourceTree = "<group>";
+		};
 		E554C98B2DD125A9002CF37B /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,8 +421,9 @@
 		E567AB712DD2117200FA92E2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				E52CDF012DD3AA6D00E22E00 /* Sooyoung */,
 				E52CDF002DD3AA6600E22E00 /* Nayeon */,
+				E52CDF012DD3AA6D00E22E00 /* Sooyoung */,
+				E5524F1B2DDE416900C396F4 /* HomeModel */,
 				E567AB722DD2117900FA92E2 /* HomeViewController */,
 				E567AB732DD2118700FA92E2 /* HomeView */,
 			);
@@ -568,6 +582,7 @@
 			files = (
 				512563D32DD5A686009D1791 /* CalendarDateFormatter.swift in Sources */,
 				E567AB752DD2119000FA92E2 /* HomeView.swift in Sources */,
+				E5524F082DDE372800C396F4 /* AddSubTaskDTO.swift in Sources */,
 				E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */,
 				5155B6212DDE0060001E59FE /* AppConfig.swift in Sources */,
 				5155B5A22DDDF959001E59FE /* HTTPMethodType.swift in Sources */,
@@ -585,6 +600,7 @@
 				513A22BB2DD5222600F28836 /* WeekCollectionViewCell.swift in Sources */,
 				51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */,
 				51580CA62DD517FC00B56E7B /* CalendarView.swift in Sources */,
+				E5524F1D2DDE418900C396F4 /* HomeModel.swift in Sources */,
 				5155B6262DDE0422001E59FE /* DetailTasksResponse.swift in Sources */,
 				5155B59E2DDDF7E8001E59FE /* BaseService.swift in Sources */,
 				D54548ED2DD6E3D200DBBE53 /* Priority.swift in Sources */,

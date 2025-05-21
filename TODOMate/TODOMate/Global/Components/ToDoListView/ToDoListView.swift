@@ -22,10 +22,10 @@ final class TodoListView: BaseUIView {
     private weak var focusedView: TodoView?
 
     /// 투두 완료했을때 사용하는 콜백입니다
-    var onToggle: ((UUID, Bool) -> Void)?
+    var onToggle: ((Int, Bool) -> Void)?
 
     /// 투두 등록할때 사용하는 콜백입니다
-    var onCommit: ((UUID, String, TodoView.TaskType, UUID?) -> Void)?
+    var onCommit: ((Int, String, TodoView.TaskType, Int?) -> Void)?
 
     // MARK: - Lifecycle
 
@@ -49,11 +49,11 @@ final class TodoListView: BaseUIView {
         guard let focusedView = focusedView else { return }
         guard let currentIndex = todoViews.firstIndex(of: focusedView) else { return }
 
-        let parentID: UUID
+        let parentID: Int
         if focusedView.taskType == .main {
             parentID = focusedView.id
         } else {
-            parentID = todoViews[..<currentIndex].last(where: { $0.taskType == .main })?.id ?? UUID()
+            parentID = todoViews[..<currentIndex].last(where: { $0.taskType == .main })?.id ?? Int()
         }
 
         let newSubView = makeTodoView(type: .sub, parentID: parentID, shouldFocus: true)
@@ -63,7 +63,7 @@ final class TodoListView: BaseUIView {
 
     // MARK: - Private Methods
 
-    private func makeTodoView(type: TodoView.TaskType, parentID: UUID? = nil, shouldFocus: Bool = false) -> TodoView {
+    private func makeTodoView(type: TodoView.TaskType, parentID: Int? = nil, shouldFocus: Bool = false) -> TodoView {
         let view = TodoView(taskType: type, shouldFocus: shouldFocus)
         view.parentMainTaskID = parentID
 

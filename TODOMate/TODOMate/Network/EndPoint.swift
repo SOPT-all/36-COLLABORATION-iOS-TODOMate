@@ -14,7 +14,7 @@ enum EndPoint {
     case patchMainTasks
     case patchSubTasks
     
-    var httpMethod: HTTPMethodType{
+    var httpMethod: HTTPMethodType {
         switch self {
         case .detailMainTasks:
             .get

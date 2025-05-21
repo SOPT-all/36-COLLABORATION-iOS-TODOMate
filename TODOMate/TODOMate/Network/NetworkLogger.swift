@@ -9,7 +9,8 @@ import Foundation
 
 final class NetworkLogger {
     static let shared = NetworkLogger()
-    private init() {}
+    
+    private init() { }
 
     static var isEnabled = true
 
@@ -55,8 +56,7 @@ final class NetworkLogger {
         }
 
         if let body = request.httpBody,
-            let str = String(data: body, encoding: .utf8)
-        {
+            let str = String(data: body, encoding: .utf8) {
             output += "\n\nBody:\n\(str)"
         }
 

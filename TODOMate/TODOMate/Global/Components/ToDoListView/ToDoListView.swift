@@ -97,15 +97,23 @@ final class TodoListView: BaseUIView {
 
                 let viewsToRemove = todoViews[startIndex..<endIndex]
                 viewsToRemove.forEach {
-                    self.stackView.removeArrangedSubview($0)
-                    $0.removeFromSuperview()
+                    if self.stackView.arrangedSubviews.contains($0) {
+                        self.stackView.removeArrangedSubview($0)
+                        $0.removeFromSuperview()
+                    }
                 }
                 todoViews.removeSubrange(startIndex..<endIndex)
             } else {
+                guard !view.hasCommitted else {
+                    print("이미 커밋된 뷰입니다: \(view.uuid)")
+                    return
+                }
                 self.onCommit?(view.id, view.text, view.taskType, view.parentMainTaskID)
+                view.hasCommitted = true
             }
         }
     }
+
 
     private func configureToggleHandler(for view: TodoView) {
         view.onToggle = { [weak self] id, isSelected in
@@ -140,6 +148,7 @@ extension TodoListView {
             mainView.id = main.id
             mainView.text = main.text
             mainView.isSelected = main.isDone
+            mainView.hasCommitted = true
             stackView.addArrangedSubview(mainView)
             todoViews.append(mainView)
 
@@ -148,9 +157,11 @@ extension TodoListView {
                 subView.id = sub.id
                 subView.text = sub.text
                 subView.isSelected = sub.isDone
+                subView.hasCommitted = true 
                 stackView.addArrangedSubview(subView)
                 todoViews.append(subView)
             }
         }
     }
+
 }

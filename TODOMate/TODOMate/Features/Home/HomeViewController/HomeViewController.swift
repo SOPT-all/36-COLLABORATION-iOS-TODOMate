@@ -17,7 +17,9 @@ final class HomeViewController: BaseUIViewController {
     // MARK: - Singletone
     
     private let detailTasksService: DetailTasksService = DetailTasksService()
-    
+
+    private let addTaskService: AddTaskService = AddTaskService()
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -81,11 +83,11 @@ final class HomeViewController: BaseUIViewController {
             listView.onCommit = { id, text, type, parentID in
                 if type == .main {
                     print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type)")
+                    self.addMainTask(text: text, categoryIndex: index + 1)
                 } else {
                     print("[카테고리\(index + 1)] 투두 생성됨yo → ID: \(id), 내용: \(text), 넌 어떤 타입이니?: \(type), 서브구나 너 메인 아이디는 뭐냐고요: \(String(describing: parentID))")
                 }
             }
-
         }
     }
 
@@ -225,7 +227,7 @@ final class HomeViewController: BaseUIViewController {
     
     // MARK: - Network
     
-    func getDetailTodoList() {
+    private func getDetailTodoList() {
         Task {
             do {
                 let date = getSelectedDate()
@@ -236,6 +238,26 @@ final class HomeViewController: BaseUIViewController {
             }
         }
     }
+
+    private func addMainTask(text: String, categoryIndex: Int) {
+        let selectedDate = getSelectedDate()
+        let request = AddMainTaskRequest(
+            taskContent: text,
+            category: "CATEGORY\(categoryIndex)",
+            taskDate: "\(selectedDate)T00:00:00Z"
+        )
+
+        Task {
+            do {
+                let response = try await addTaskService.addMainTask(request: request)
+                print("메인 태스크 생성 성공: \(response)")
+                getDetailTodoList()
+            } catch {
+                print("메인 태스크 생성 실패: \(error.localizedDescription)")
+            }
+        }
+    }
+
 }
 
 extension HomeViewController: isSelectCalendarCellDelegate {

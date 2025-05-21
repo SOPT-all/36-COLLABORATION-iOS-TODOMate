@@ -20,6 +20,8 @@
 		5155B6212DDE0060001E59FE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5155B6202DDE005C001E59FE /* AppConfig.swift */; };
 		5155B6262DDE0422001E59FE /* DetailTasksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5155B6252DDE040D001E59FE /* DetailTasksResponse.swift */; };
 		5155B6282DDE06DA001E59FE /* DetailTasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5155B6272DDE06CF001E59FE /* DetailTasksService.swift */; };
+		5155B6602DDE4151001E59FE /* SubTaskPatchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5155B65F2DDE4140001E59FE /* SubTaskPatchRequest.swift */; };
+		5155B6622DDE41D3001E59FE /* SubTaskPatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5155B6612DDE41C6001E59FE /* SubTaskPatchService.swift */; };
 		51580CA32DD517FC00B56E7B /* WeekBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9D2DD517FC00B56E7B /* WeekBox.swift */; };
 		51580CA42DD517FC00B56E7B /* WeekBoxIconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */; };
 		51580CA52DD517FC00B56E7B /* WeekBoxLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */; };
@@ -77,6 +79,8 @@
 		5155B6202DDE005C001E59FE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		5155B6252DDE040D001E59FE /* DetailTasksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTasksResponse.swift; sourceTree = "<group>"; };
 		5155B6272DDE06CF001E59FE /* DetailTasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTasksService.swift; sourceTree = "<group>"; };
+		5155B65F2DDE4140001E59FE /* SubTaskPatchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskPatchRequest.swift; sourceTree = "<group>"; };
+		5155B6612DDE41C6001E59FE /* SubTaskPatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTaskPatchService.swift; sourceTree = "<group>"; };
 		51580C9D2DD517FC00B56E7B /* WeekBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBox.swift; sourceTree = "<group>"; };
 		51580C9E2DD517FC00B56E7B /* WeekBoxIconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBoxIconImage.swift; sourceTree = "<group>"; };
 		51580C9F2DD517FC00B56E7B /* WeekBoxLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekBoxLabel.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 		5155B6232DDE035E001E59FE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5155B65F2DDE4140001E59FE /* SubTaskPatchRequest.swift */,
 				5155B6252DDE040D001E59FE /* DetailTasksResponse.swift */,
 				E5524F032DDE2AC900C396F4 /* AddMainTaskDTO.swift */,
 				E5524F072DDE372800C396F4 /* AddSubTaskDTO.swift */,
@@ -185,6 +190,7 @@
 		5155B6242DDE0360001E59FE /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5155B6612DDE41C6001E59FE /* SubTaskPatchService.swift */,
 				5155B6272DDE06CF001E59FE /* DetailTasksService.swift */,
 				E5524F012DDE29B100C396F4 /* AddTaskService.swift */,
 			);
@@ -585,6 +591,7 @@
 				E5524F082DDE372800C396F4 /* AddSubTaskDTO.swift in Sources */,
 				E5191F3F2DCC9A5E006F43B6 /* UIView+.swift in Sources */,
 				5155B6212DDE0060001E59FE /* AppConfig.swift in Sources */,
+				5155B6622DDE41D3001E59FE /* SubTaskPatchService.swift in Sources */,
 				5155B5A22DDDF959001E59FE /* HTTPMethodType.swift in Sources */,
 				E5EF8D9B2DD4F62600CF5BB2 /* ToDoListView.swift in Sources */,
 				E5191F3A2DCC9A1C006F43B6 /* BaseUIView.swift in Sources */,
@@ -623,6 +630,7 @@
 				E554C98D2DD125CD002CF37B /* TabBarViewController.swift in Sources */,
 				E52CDF092DD3AAD800E22E00 /* HomeView_sooyoung.swift in Sources */,
 				E52CDF3E2DD4D76A00E22E00 /* UIViewController+.swift in Sources */,
+				5155B6602DDE4151001E59FE /* SubTaskPatchRequest.swift in Sources */,
 				E52CDF3C2DD4D52500E22E00 /* ToDoView.swift in Sources */,
 				E5EF8DA22DD5343F00CF5BB2 /* ToDoModel.swift in Sources */,
 				E5191F262DCC9790006F43B6 /* SceneDelegate.swift in Sources */,

@@ -12,7 +12,7 @@ enum EndPoint {
     case postMainTasks
     case postSubTasks(Int)
     case patchMainTasks
-    case patchSubTasks
+    case patchSubTasks(Int)
     
     var httpMethod: HTTPMethodType {
         switch self {
@@ -44,8 +44,11 @@ enum EndPoint {
         switch self {
         case .postSubTasks(let taskId):
             return defaultHeaders.merging(["taskId": "\(taskId)"]) { _, new in new }
+        case .patchSubTasks(let taskId):
+            return defaultHeaders.merging(["taskId": "\(taskId)"]) { _, new in new }
         default:
             return defaultHeaders
         }
     }
+
 }

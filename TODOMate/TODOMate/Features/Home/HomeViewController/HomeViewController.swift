@@ -77,7 +77,7 @@ final class HomeViewController: BaseUIViewController {
                 
                 Task {
                     do {
-                        let result = try await self.subTaskPatchService.patchSubTask(id: id, request: [request])
+                        let result = try await self.subTaskPatchService.patchSubTask(id: id, request: request)
                         print("서브태스크 상태 패치 완료", result)
                     } catch {
                         print("패치 에러: \(error)")

@@ -10,7 +10,7 @@ struct VoidType: Decodable {}
 final class SubTaskPatchService {
     let shared = BaseService.shared
     
-    func patchSubTask(id: Int, request: [SubTaskPatchRequest]) async throws -> BaseResponse<VoidType> {
+    func patchSubTask(id: Int, request: SubTaskPatchRequest) async throws -> BaseResponse<VoidType> {
         do {
             let response: BaseResponse<VoidType> = try await shared.request(
                 endPoint: .patchSubTasks(id),

@@ -71,18 +71,21 @@ final class HomeViewController: BaseUIViewController {
     /// 투두 완료 api 호출을 위한 함수입니당 제발 request 안바뀌길,,,,
     private func setupTodoToggleCallbacks() {
         homeView.todoListViews.enumerated().forEach { index, listView in
-            listView.onToggle = { id, isSelected in
-                print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
+            listView.onToggle = { id, isSelected, taskType in
+                print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected), 태스크 타입: \(taskType) ")
                 
                 let subRequest = SubTaskPatchRequest(completed: isSelected)
                 let mainRequest = MainCompletedRequest(completed: isSelected)
                 
                 Task {
                     do {
-                            let mainResult = try await self.patchMainService.patchMainTask(id: id, request: mainRequest)
-//                        let subResult = try await self.subTaskPatchService.patchSubTask(id: id, request: subRequest)
-                        print("메인테스크 상태 패치 완료", mainResult)
-//                        print("서브태스크 상태 패치 완료", subResult)
+                        if taskType == .main {
+                            let result = try await self.patchMainService.patchMainTask(id: id, request: mainRequest)
+                            print("메인테스크 상태 패치 완료:", result)
+                        } else {
+                            let result = try await self.subTaskPatchService.patchSubTask(id: id, request: subRequest)
+                            print("서브태스크 상태 패치 완료:", result)
+                        }
                     } catch {
                         print("패치 에러: \(error)")
                     }

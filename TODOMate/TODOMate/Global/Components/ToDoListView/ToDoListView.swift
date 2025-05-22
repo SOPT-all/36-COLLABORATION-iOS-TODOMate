@@ -22,7 +22,7 @@ final class TodoListView: BaseUIView {
     private weak var focusedView: TodoView?
 
     /// 투두 완료했을때 사용하는 콜백입니다
-    var onToggle: ((Int, Bool) -> Void)?
+    var onToggle: ((Int, Bool, TodoView.TaskType) -> Void)?
 
     /// 투두 등록할때 사용하는 콜백입니다
     var onCommit: ((Int, String, TodoView.TaskType, Int?) -> Void)?
@@ -118,7 +118,7 @@ final class TodoListView: BaseUIView {
         view.onToggle = { [weak self] id, isSelected in
             guard let self else { return }
 
-            self.onToggle?(id, isSelected)
+            self.onToggle?(id, isSelected, view.taskType)
 
             guard view.taskType == .main,
                   let currentIndex = self.todoViews.firstIndex(of: view) else { return }
@@ -128,7 +128,7 @@ final class TodoListView: BaseUIView {
                   self.todoViews[nextIndex].taskType == .sub {
                 let subView = self.todoViews[nextIndex]
                 subView.isSelected = isSelected
-                self.onToggle?(subView.id, isSelected)
+                self.onToggle?(subView.id, isSelected, subView.taskType)
                 nextIndex += 1
             }
         }

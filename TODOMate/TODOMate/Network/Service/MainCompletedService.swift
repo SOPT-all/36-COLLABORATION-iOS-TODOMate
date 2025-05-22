@@ -5,13 +5,15 @@
 //  Created by LEESOOYONG on 5/22/25.
 //
 
+struct VoidType: Decodable {}
+
 final class MainCompletedService {
     let shared = BaseService.shared
     
-    func patchMainCompleted(request: MainCompletedRequest, taskId: Int) async throws -> [MainCompletedRequest] {
+    func patchMainTask(id: Int, request: MainCompletedRequest) async throws -> BaseResponse<VoidType> {
         do {
-            let response: [MainCompletedRequest] = try await shared.request(
-                endPoint: .patchMainTasks(taskId),
+            let response: BaseResponse<VoidType> = try await shared.request(
+                endPoint: .patchMainTasks(id),
                 body: request
             )
             return response

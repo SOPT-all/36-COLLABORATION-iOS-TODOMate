@@ -74,32 +74,17 @@ final class HomeViewController: BaseUIViewController {
             listView.onToggle = { id, isSelected in
                 print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
                 
-                let request = SubTaskPatchRequest(completed: isSelected)
-                
-                print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
-                
-                let request = MainCompletedRequest(completed: isSelected)
+                let subRequest = SubTaskPatchRequest(completed: isSelected)
+                let mainRequest = MainCompletedRequest(completed: isSelected)
                 
                 Task {
                     do {
-                        let result = try await self.subTaskPatchService.patchSubTask(id: id, request: request)
-                        print("서브태스크 상태 패치 완료", result)
+                            let mainResult = try await self.patchMainService.patchMainTask(id: id, request: mainRequest)
+//                        let subResult = try await self.subTaskPatchService.patchSubTask(id: id, request: subRequest)
+                        print("메인테스크 상태 패치 완료", mainResult)
+//                        print("서브태스크 상태 패치 완료", subResult)
                     } catch {
                         print("패치 에러: \(error)")
-                    }
-                }
-                Task {
-                    do {
-//                        let result = try await patchMainService.patchMainCompleted(
-//                            request: MainCompletedRequest(completed: isSelected), taskId: id)
-                        print("[카테고리\(index + 1)] ID: \(id), 상태: \(isSelected)")
-//                    } catch {
-//                        print("에러 발생: \(error.localizedDescription)")
-                        let result = try await self.patchMainService.patchMainTask(id: id, request: request)
-                        print("메인테스크 상태 패치 완료", result)
-                        
-                    } catch {
-                        print("에러 발생: \(error)")
                     }
                 }
             }

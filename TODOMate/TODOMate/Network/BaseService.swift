@@ -68,7 +68,19 @@ final class BaseService {
         do {
             print("type\(Response.self)")
             let decoded = try JSONDecoder().decode(BaseResponse<Response>.self, from: data)
+            print("디코딩된 데이터는요: ", decoded)
             
+            if Response.self == VoidType.self {
+                let successCodes = ["s2000", "s2010", "s2040"]
+                guard successCodes.contains(decoded.code) else {
+                    throw NetworkError.serverErrorMessage(decoded.message)
+                }
+
+                return (VoidType() as? Response) ?? {
+                       fatalError("VoidType을 Response로 변환할 수 없습니다.")
+               }()
+            }
+
             guard let data = decoded.data else {
                 throw NetworkError.noData
             }

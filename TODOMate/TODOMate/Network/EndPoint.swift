@@ -46,6 +46,8 @@ enum EndPoint {
             return defaultHeaders.merging(["taskId": "\(taskId)"]) { _, new in new }
         case .patchSubTasks(let taskId):
             return defaultHeaders.merging(["taskId": "\(taskId)"]) { _, new in new }
+        case .patchMainTasks(let taskId):
+            return defaultHeaders.merging(["taskId": "\(taskId)"]) { _, new in new }
         default:
             return defaultHeaders
         }

@@ -1,4 +1,4 @@
-# 합동세미나 앱8팀 투두메이트 iOS
+# 36기 합동세미나 앱8팀 투두메이트 iOS
 <br>
 
 ## 🍎 Developers
@@ -44,7 +44,9 @@
 ## Code Convention
 - Swift Lint에서 설정한 규칙과, 킥오프 때 정한 코드 컨벤션을 따릅니다.
 - PR 작성 시 Swift Lint의 검사를 받고, 통과 후 merge합니다.
-  
+
+
+<br>
 
 ## 시연영상
 | 날짜 변경 |
